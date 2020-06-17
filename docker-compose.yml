@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  web:
+    image: circleci/ruby:2.6.5-node-browsers
+    working_dir: /home/circleci/scrapmap
+    command: ["tail", "-f", "/dev/null"]
+    ports:
+    - "50272:50272"
+    links:
+    - mysql
+    environment:
+      PORT: 50272
+      DATABASE_HOST: mysql
+    volumes:
+    - scrapmap-native-osx-sync:/home/circleci/scrapmap:nocopy
+  mysql:
+    image: mysql:5.7.23
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+    - ./my.cnf:/etc/mysql/conf.d/my.cnf
+volumes:
+  scrapmap-native-osx-sync:
+    external: true

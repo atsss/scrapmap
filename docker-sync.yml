@@ -1,0 +1,15 @@
+version: "2"
+
+syncs:
+  scrapmap-native-osx-sync:
+    src: '.'
+    sync_userid: 3434
+    sync_excludes:
+    - .git
+    - node_modules
+    - vendor/bundle
+    - tmp
+    monit_enable: true
+    monit_interval: 5
+    monit_high_cpu_cycles: 2
+
