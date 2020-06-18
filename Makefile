@@ -22,6 +22,8 @@ yarn:
 	@$(WEB) yarn
 webpack:
 	@$(WEB) ./bin/webpack-dev-server
+mysql:
+	@$(CONMPOSE) exec mysql bash
 rs:
 	@$(RAILS) s -b 0.0.0.0 -p 50272
 default:
