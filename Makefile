@@ -24,6 +24,10 @@ webpack:
 	@$(WEB) ./bin/webpack-dev-server
 mysql:
 	@$(CONMPOSE) exec mysql bash
+rub:
+	@$(WEB) bundle exec rubocop
+autorub:
+	@$(WEB) bundle exec rubocop -a
 rs:
 	@$(RAILS) s -b 0.0.0.0 -p 50272
 default:

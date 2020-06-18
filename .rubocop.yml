@@ -1,0 +1,167 @@
+AllCops:
+  UseCache: false
+  TargetRubyVersion: 2.5
+  Exclude:
+    - 'bin/*'
+    - 'circle/**/*'
+    - 'config/*.rb'
+    - 'data/**/*'
+    - 'db/**/*'
+    - 'doc/**/*'
+    - 'log/**/*'
+    - 'mecab/**/*'
+    - 'node_modules/**/*'
+    - 'public/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'lib/batches/tmp/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+
+PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%':  '()'
+    '%i': '()'
+    '%q': '()'
+    '%Q': '()'
+    '%r': '{}'
+    '%s': '()'
+    '%w': '()'
+    '%W': '()'
+    '%x': '()'
+
+#
+# Lint
+#
+
+# Rails っぽい書き方ではないので無効にする
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+#
+# Layout
+#
+
+# ! の後に space があったほうが見やすいことが多い
+Layout/SpaceAfterNot:
+  Enabled: false
+
+# diff がみやすくなるので
+Layout/MultilineArrayBraceLayout:
+  Enabled: false
+
+# diff がみやすくなるので
+Layout/MultilineHashBraceLayout:
+  Enabled: false
+
+Layout/HashAlignment:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+  # .to〜.and の chain を期待する通りに解析できないので除外
+  Exclude:
+    - 'spec/**/*'
+
+# 強制したくないケースが多い（# 前のスペース数など）
+Layout/ExtraSpacing:
+  Enabled: false
+
+#
+# Style
+#
+
+# 日本語のコメントを検出しない
+Style/AsciiComments:
+  Enabled: false
+
+# 現時点では対応しない
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# diff が見やすくなることがある
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+# diff が見やすくなることがある
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+# diff が見やすくなることがある
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+# !! のほうが読みやすい
+Style/DoubleNegation:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+# error になるケースがある
+Style/RaiseArgs:
+  Enabled: false
+
+# 気にするほどのことではない
+Style/MultilineBlockChain:
+  Enabled: false
+
+# 見やすくならない
+Style/NumericPredicate:
+  Enabled: false
+
+# 多量にあるが効果も低いので当面修正しないことにする
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Semicolon:
+  Enabled: false
+
+# statemachine などの宣言がわかりづらくなる
+Style/SymbolProc:
+  Enabled: false
+
+#
+# Metrics
+#
+
+Metrics/MethodLength:
+  Max: 60
+
+Metrics/BlockLength:
+  Max: 70
+  Exclude:
+    - 'config/**/*'
+    - 'spec/**/*'
+    - 'lib/**/*'
+
+Metrics/AbcSize:
+  Max: 60
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/ModuleLength:
+  Max: 150
+
+Metrics/ParameterLists:
+  Enabled: false
+
+#
+# Naming
+#
+
+# 強制したくないケースも多い
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+
+# 見やすくならない
+Style/FormatStringToken:
+  Enabled: false
+
+inherit_from: '.rubocop_todo.yml'
