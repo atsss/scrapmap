@@ -8,4 +8,7 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
   body
+    - flash.each do |_key, val|
+      p = val
+
     = yield
