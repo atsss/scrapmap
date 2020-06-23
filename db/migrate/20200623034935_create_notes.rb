@@ -1,7 +1,7 @@
 class CreateNotes < ActiveRecord::Migration[6.0]
   def change
     create_table :notes do |t|
-      t.references :plaae, null: false
+      t.references :place, null: false
       t.text :content
 
       t.timestamps
