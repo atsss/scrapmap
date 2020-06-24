@@ -1,7 +1,11 @@
 class PlacesController < ApplicationController
+  before_action :set_place, only: %i(show)
+
   def index
     @places = Place.all
   end
+
+  def show; end
 
   def new
     @form = Places::Create.new
@@ -21,6 +25,10 @@ class PlacesController < ApplicationController
   end
 
   private
+
+  def set_place
+    @place = Place.find(params[:id])
+  end
 
   def places_create_params
     params.require(:places_create).permit(%i(name lat lon note))

@@ -1,0 +1,8 @@
+section
+  h1 Place show
+
+  p = @place.name
+  ul
+    - @place.notes.each do |note|
+      li = simple_format(note.content)
+
