@@ -9,7 +9,7 @@ up:
 	@$(SYNC) start
 	@$(CONMPOSE) up -d
 down:
-	@$(CONMPOSE) down
+	@$(CONMPOSE) stop
 	@$(SYNC) clean
 restart:
 	@$(SYNC) restart
