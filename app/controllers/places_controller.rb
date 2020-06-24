@@ -4,23 +4,25 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @place = Place.new
+    @form = Places::Create.new
   end
 
   def create
-    @place = Place.new(place_params)
+    outcome = Places::Create.run(places_create_params.to_h)
 
-    if @place.save
-      redirect_to :index, notice: 'Success'
+    if outcome.valid?
+      redirect_to place_path(outcome.result), notice: 'Success'
     else
-      flash.now[:alert] = 'Failure'
+      @form = Places::Create.new(places_create_params)
+
+      flash.now[:alert] = outcome.errors.full_messages.join(', ')
       render :new
     end
   end
 
   private
 
-  def place_params
-    params.require(:place).permit(%i(name lat lon))
+  def places_create_params
+    params.require(:places_create).permit(%i(name lat lon note))
   end
 end

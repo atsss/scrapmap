@@ -1,0 +1,17 @@
+section
+  h1 Place create
+
+  = form_with model: @form, url: places_path, local: true do |f|
+    = f.label :name
+    = f.text_field :name
+
+    = f.label :lat
+    = f.phone_field :lat
+
+    = f.label :lon
+    = f.phone_field :lon
+
+    = f.label :note
+    = f.text_area :note
+
+    = f.submit 'Create'
