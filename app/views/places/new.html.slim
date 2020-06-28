@@ -14,7 +14,7 @@ section
     = f.label :note
     = f.text_area :note
 
-    = f.label :image
-    = f.file_field :image
+    = f.label :images
+    = f.file_field :images, multiple: true
 
     = f.submit 'Create'

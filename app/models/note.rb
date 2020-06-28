@@ -14,6 +14,6 @@
 #
 class Note < ApplicationRecord
   belongs_to :place
-  has_one_attached :image # FIXME: has_many_attached にする
+  has_many_attached :images
   validates :content, presence: true
 end
