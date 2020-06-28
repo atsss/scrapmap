@@ -1,9 +1,11 @@
 import Base from "./Base";
+import Places from "./controllers/Places";
 
 global.$ = global.jQuery = require("jquery");
 
 const App = {
-  Base
+  Base,
+  Places
 };
 
 export default App;
