@@ -1,8 +1,12 @@
 section
   h1 Place show
 
+  = link_to 'Back', root_path
+
   p = @place.name
   ul
     - @place.notes.each do |note|
-      li = simple_format(note.content)
-
+      li
+        - note.images.each do |image|
+          = image_tag image
+        = simple_format(note.content)
