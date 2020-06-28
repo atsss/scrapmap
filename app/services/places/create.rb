@@ -4,6 +4,7 @@ module Places
     float :lat
     float :lon
     string :note
+    object :image, class: ActionDispatch::Http::UploadedFile, default: nil
 
     validates :name, :lat, :lon, :note, presence: true
 
@@ -12,7 +13,7 @@ module Places
 
       transaction do
         place.save!
-        place.notes.create!(content: note)
+        place.notes.create!(content: note, image: image)
       end
 
       place
