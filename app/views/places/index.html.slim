@@ -3,6 +3,9 @@ section
 
   = link_to 'Create New', new_place_path
 
+  div style='width: 800px;'
+    #map style='width: 800px; height: 400px;'
+
   ul
     - @places.each do |place|
       li = link_to place.name, place_path(place)
