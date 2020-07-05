@@ -3,6 +3,7 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all
+    @js_vars = @places
   end
 
   def show; end
