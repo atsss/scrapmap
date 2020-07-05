@@ -2,9 +2,10 @@ import Base from "../Base";
 
 export default class Places extends Base {
   index() {
+    // center の情報を位置情報から取得するようにする
     const map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 8
+      center: {lat: 9.927698, lng: -84.0695952},
+      zoom: 14
     });
   }
 
