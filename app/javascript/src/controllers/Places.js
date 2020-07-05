@@ -10,20 +10,20 @@ export default class Places extends Base {
 
     let marker = [];
     for (let i = 0; i < vars.length; i++) {
-      console.log('lat: ', vars[i]['lat'])
-      console.log('lon: ', vars[i]['lon'])
       const markerLatLng = new google.maps.LatLng({lat: vars[i]['lat'], lng: vars[i]['lon']});
-      console.log(markerLatLng)
       marker[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map
       });
-      console.log(marker[i])
     }
   }
 
   new() {
-    navigator.geolocation.getCurrentPosition(setLocation);
+    navigator.geolocation.getCurrentPosition(
+      setLocation,
+      (error) => console.log('GPS get location error: ', error.message),
+      { enableHighAccuracy: true }
+  );
   }
 }
 
