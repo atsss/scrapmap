@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_212233) do
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.float "lon"
+    t.float "lng"
     t.float "lat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

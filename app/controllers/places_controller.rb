@@ -32,6 +32,6 @@ class PlacesController < ApplicationController
   end
 
   def places_create_params
-    params.require(:places_create).permit(:name, :lat, :lon, :note, images: [])
+    params.require(:places_create).permit(:name, :lat, :lng, :note, images: [])
   end
 end

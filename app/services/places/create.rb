@@ -2,16 +2,16 @@ module Places
   class Create < ApplicationService
     string :name
     float :lat
-    float :lon
+    float :lng
     string :note
     array :images, default: nil do
       object class: ActionDispatch::Http::UploadedFile
     end
 
-    validates :name, :lat, :lon, :note, presence: true
+    validates :name, :lat, :lng, :note, presence: true
 
     def execute
-      place = Place.new(name: name, lat: lat, lon: lon)
+      place = Place.new(name: name, lat: lat, lng: lng)
 
       transaction do
         place.save!

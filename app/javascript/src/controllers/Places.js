@@ -4,7 +4,7 @@ export default class Places extends Base {
   index(vars) {
     const map = setMap();
 
-    for (let i = 0; i < vars.length; i++) { setMarker(map, vars[i]['lat'], vars[i]['lon']); }
+    for (let i = 0; i < vars.length; i++) { setMarker(map, vars[i]['lat'], vars[i]['lng']); }
   }
 
   new() {
@@ -18,9 +18,9 @@ export default class Places extends Base {
 
 const setLocation = position => {
   $('#js-lat').val(position.coords.latitude)
-  $('#js-lon').val(position.coords.longitude)
+  $('#js-lng').val(position.coords.longitude)
   console.log('lat: ', position.coords.latitude);
-  console.log('lon: ', position.coords.longitude);
+  console.log('lng: ', position.coords.longitude);
 }
 
 const setMap = () => {
