@@ -20,14 +20,14 @@ default: &default
 
 development:
   <<: *default
-  database: scrapmap_development
+  database: cocchi_development
 
 test:
   <<: *default
-  database: scrapmap_test
+  database: cocchi_test
 
 production:
   <<: *default
-  database: scrapmap_production
-  username: scrapmap
-  password: <%= ENV['SCRAPMAP_DATABASE_PASSWORD'] %>
+  database: cocchi_production
+  username: cocchi
+  password: <%= ENV['COCCHI_DATABASE_PASSWORD'] %>
