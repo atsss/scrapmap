@@ -2,20 +2,9 @@ import Base from "../Base";
 
 export default class Places extends Base {
   index(vars) {
-    // center の情報を位置情報から取得するようにする
-    const map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 9.927698, lng: -84.0695952},
-      zoom: 14
-    });
+    const map = setMap();
 
-    let marker = [];
-    for (let i = 0; i < vars.length; i++) {
-      const markerLatLng = new google.maps.LatLng({lat: vars[i]['lat'], lng: vars[i]['lon']});
-      marker[i] = new google.maps.Marker({
-        position: markerLatLng,
-        map: map
-      });
-    }
+    for (let i = 0; i < vars.length; i++) { setMarker(map, vars[i]['lat'], vars[i]['lon']); }
   }
 
   new() {
@@ -32,4 +21,24 @@ const setLocation = position => {
   $('#js-lon').val(position.coords.longitude)
   console.log('lat: ', position.coords.latitude);
   console.log('lon: ', position.coords.longitude);
+}
+
+const setMap = () => {
+  // center の情報を位置情報から取得するようにする
+  const map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 9.927698, lng: -84.0695952},
+    zoom: 13
+  });
+
+  return map
+}
+
+const setMarker = (map, lat, lng) => {
+  const markerLatLng = new google.maps.LatLng({ lat, lng });
+  const marker = new google.maps.Marker({
+    position: markerLatLng,
+    map: map
+  });
+
+  return marker;
 }
