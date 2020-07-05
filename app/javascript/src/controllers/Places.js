@@ -3,8 +3,12 @@ import Base from "../Base";
 export default class Places extends Base {
   index(vars) {
     const map = setMap();
-
     for (let i = 0; i < vars.length; i++) { setMarker(map, vars[i]['lat'], vars[i]['lng']); }
+  }
+
+  show(vars) {
+    const map = setMap();
+    setMarker(map, vars['lat'], vars['lng']);
   }
 
   new() {

@@ -6,7 +6,9 @@ class PlacesController < ApplicationController
     @js_vars = @places
   end
 
-  def show; end
+  def show
+    @js_vars = @place
+  end
 
   def new
     @form = Places::Create.new

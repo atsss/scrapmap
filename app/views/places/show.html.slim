@@ -3,6 +3,8 @@ section
 
   = link_to 'Back', root_path
 
+  = map_tag
+
   p = @place.name
   ul
     - @place.notes.each do |note|
