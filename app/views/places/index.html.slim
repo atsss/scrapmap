@@ -3,8 +3,7 @@ section
 
   = link_to 'Create New', new_place_path
 
-  div style='width: 800px;'
-    #map style='width: 800px; height: 400px;'
+  = map_tag
 
   ul
     - @places.each do |place|
