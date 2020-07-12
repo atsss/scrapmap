@@ -23,6 +23,9 @@ gem 'image_processing'
 # Notification
 gem 'slack-notifier'
 
+# Environment management
+gem 'config'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
