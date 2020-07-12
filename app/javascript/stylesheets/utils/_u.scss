@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+@for $i from -15 through 15 {
+  .u-mt#{$i * 8} { margin-top: 8px * $i !important; }
+  .u-mr#{$i * 8} { margin-right: 8px * $i !important; }
+  .u-mb#{$i * 8} { margin-bottom: 8px * $i !important; }
+  .u-ml#{$i * 8} { margin-left: 8px * $i !important; }
+}

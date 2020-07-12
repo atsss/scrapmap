@@ -1,0 +1,18 @@
+- form ||= nil
+- path ||= nil
+- margin ||= 0
+- disabled ||= nil
+- size ||= 'medium'
+// FIXME: デフォルトを空にする
+- width ||= 'is-fullwidth'
+
+- if form.present?
+  = form.button :submit,
+    class: "button is-medium is-fullwidth u-mt#{margin}",
+    data: { disable_with: '処理中..' }
+    = text
+- elsif path.present?
+  = link_to path,
+    class: "button is-#{size} #{width} u-mt#{margin}",
+    disabled: disabled, data: { disable_with: '処理中..' }
+    = text

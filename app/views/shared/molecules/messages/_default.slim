@@ -1,0 +1,10 @@
+- klass ||= 'is-primary'
+- margin ||= 0
+- title ||= nil
+
+.message class="#{klass} u-mt#{margin}"
+  - if title.present?
+    .message-header
+      p = title
+  .message-body
+    = render 'shared/atoms/texts/default', text: content

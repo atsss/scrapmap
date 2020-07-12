@@ -1,0 +1,23 @@
+- margin ||= 0
+- flash.each do |key, val|
+  ruby:
+    case key
+    when 'notice'
+      kls = 'is-primary'
+      style = 'color: #FFF;'
+    when 'success'
+      kls = 'is-info'
+      style = 'color: #FFF;'
+    when 'error'
+      kls = 'is-danger'
+      style = 'color: #FFF;'
+    when 'alert'
+      kls = 'is-warning'
+      style = ''
+    end
+
+  section.section
+    .container
+      .notification class="u-mt#{margin} #{kls}"
+        strong
+          = render 'shared/atoms/texts/default', text: val, style: style

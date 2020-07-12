@@ -1,0 +1,28 @@
+- placeholder ||= ''
+- maxlength ||= nil
+- hint ||= ''
+- type ||= :text
+- hide_value ||= false
+- margin ||= 0
+
+- form_options = { placeholder: placeholder, maxlength: maxlength, class: 'input' }
+- form_options.merge!(value: nil) if hide_value
+
+.field.u-mb0 class="u-mt#{margin}"
+  label.label = label
+  .control
+    - form.with_options(form_options) do |f|
+      - if type == :text
+        = f.text_field name
+      - elsif type == :email
+        = f.email_field name
+      - elsif type == :password
+        = f.password_field name
+      - elsif type == :number
+        = f.number_field name
+      - elsif type == :phone
+        = f.phone_field name
+      - elsif type == :date
+        = f.date_field name
+    - if hint.present?
+      .help = hint

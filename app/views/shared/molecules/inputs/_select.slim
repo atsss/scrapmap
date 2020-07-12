@@ -1,0 +1,9 @@
+- width ||= '100%'
+- include_blank ||= nil
+
+.field.u-mb0 class="u-mt#{margin}"
+  label.label = label
+  .control
+    .select style="width: #{width}"
+      = form.select name, options, { include_blank: include_blank }, style: "width: #{width}"
+

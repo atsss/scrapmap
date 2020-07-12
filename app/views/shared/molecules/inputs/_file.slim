@@ -1,0 +1,17 @@
+- width ||= '100%'
+
+.field.u-mb0 class="u-mt#{margin}"
+  label.label = label
+  = image_tag form.object.send(name).url, class: "js-#{name.to_s}"
+  .control
+    .file
+      label.file-label style="width: #{width}"
+        = form.file_field name,
+          class: "file-input js-input",
+          data: { target: ".js-#{name.to_s}" }
+        = form.hidden_field "#{name}_cache".to_sym
+        span.file-cta style="width: #{width}"
+          span.file-icon
+            i.fas.fa-upload
+          span.file-label
+            | カメラを起動する

@@ -1,0 +1,9 @@
+- placeholder ||= ''
+- margin ||= 0
+
+- form_options = { placeholder: placeholder, class: 'input' }
+
+.field.u-mb0 class="u-mt#{margin}"
+  label.label = label
+  .control
+    = form.text_area name, placeholder: placeholder, class: 'textarea'

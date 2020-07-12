@@ -1,0 +1,17 @@
+- form ||= nil
+- path ||= nil
+- method ||= :get
+- margin ||= 0
+- confirm ||= nil
+
+- if form.present?
+  = form.button :submit,
+    class: "button is-danger is-medium is-fullwidth u-mt#{margin}",
+    data: { confirm: confirm, disable_with: '処理中..' }
+    = text
+- elsif path.present?
+  = link_to path,
+    method: method,
+    class: "button is-danger is-medium is-fullwidth u-mt#{margin}",
+    data: { confirm: confirm, disable_with: '処理中..' }
+    = text

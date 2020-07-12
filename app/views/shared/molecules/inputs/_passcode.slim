@@ -1,0 +1,32 @@
+- margin ||= 0
+- name ||= :passcodes
+
+.m-inputs_passcode class="u-mt#{margin}"
+  .field.m-inputs_passcode__field.u-mb0
+    .control
+      = telephone_field_tag "#{form.object.class.name.underscore}[#{name}][]",
+        nil,
+        maxlength: 1,
+        id: "purchase_request_#{name}_1",
+        class: 'input m-inputs_passcode__input js-inputs_passcode__input'
+  .field.m-inputs_passcode__field.u-mb0
+    .control
+      = telephone_field_tag "#{form.object.class.name.underscore}[#{name}][]",
+        nil,
+        maxlength: 1,
+        id: "purchase_request_#{name}_2",
+        class: 'input m-inputs_passcode__input js-inputs_passcode__input'
+  .field.m-inputs_passcode__field.u-mb0
+    .control
+      = telephone_field_tag "#{form.object.class.name.underscore}[#{name}][]",
+        nil,
+        maxlength: 1,
+        id: "purchase_request_#{name}_3",
+        class: 'input m-inputs_passcode__input js-inputs_passcode__input'
+  .field.m-inputs_passcode__field.u-mb0
+    .control
+      = telephone_field_tag "#{form.object.class.name.underscore}[#{name}][]",
+        nil,
+        maxlength: 1,
+        id: "purchase_request_#{name}_4",
+        class: 'input m-inputs_passcode__input js-inputs_passcode__input'
