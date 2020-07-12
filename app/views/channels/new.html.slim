@@ -1,3 +1,5 @@
+= header(root_path)
+
 section.section
   .container
     = render 'shared/atoms/heading', title: 'Place index'
@@ -10,4 +12,3 @@ section.section
         placeholder: 'Starbucks',
         margin: 24
       = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
-      = render 'shared/atoms/buttons/sub', path: root_path, text: 'Back', margin:24

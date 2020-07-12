@@ -1,3 +1,5 @@
+= header(channel_path(@place.channel))
+
 section.section
   .container
     = render 'shared/atoms/heading', title: @place.name
@@ -20,5 +22,3 @@ section.section
             = render 'shared/atoms/texts/default',
               text: note.content,
               margin: 8
-
-    = render 'shared/atoms/buttons/sub', path: channel_path(@place.channel), text: 'Back', margin: 16

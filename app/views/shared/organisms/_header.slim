@@ -1,0 +1,15 @@
+- back_path ||= nil
+
+header.section.o-header
+  .container.o-header__block
+    - if back_path.present?
+      = link_to back_path, class: 'o-header__link'
+        span
+          i.far.fa-arrow-alt-circle-left
+    - else
+      div
+
+    = link_to root_path
+      h1.o-header__title Cocchi
+
+    div

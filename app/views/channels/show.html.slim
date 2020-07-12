@@ -1,3 +1,5 @@
+= header(root_path)
+
 section.section
   .container
     = render 'shared/atoms/heading', title: "#{@channel.name} channel"
@@ -12,5 +14,3 @@ section.section
     ul
       - @channel.places.each do |place|
         li.u-mt32 = render 'shared/atoms/link', path: place_path(place), text: place.name
-
-    = render 'shared/atoms/buttons/sub', path: root_path, text: 'Back', margin:24

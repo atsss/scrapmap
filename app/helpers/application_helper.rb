@@ -5,6 +5,12 @@ module ApplicationHelper
     end
   end
 
+  def header(back_path=nil)
+    content_for(:header) do
+      render 'shared/organisms/header', back_path: back_path
+    end
+  end
+
   def js_bootstrap_tag
     content_tag(
       :div,

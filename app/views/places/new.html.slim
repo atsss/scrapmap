@@ -1,3 +1,5 @@
+= header(channel_path(@form.channel_id))
+
 section.section
   .container
     = render 'shared/atoms/heading', title: 'New place'
@@ -38,4 +40,3 @@ section.section
         label: 'Image',
         margin: 24
       = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
-      = render 'shared/atoms/buttons/sub', path: channel_path(@form.channel_id), text: 'Back', margin:24

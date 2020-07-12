@@ -1,3 +1,5 @@
+= header(place_path(@place))
+
 section.section
   .container
     = render 'shared/atoms/heading', title: "#{@place.name} | Add new note"
@@ -15,4 +17,3 @@ section.section
         label: 'Image',
         margin: 24
       = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
-      = render 'shared/atoms/buttons/sub', path: place_path(@place), text: 'Back', margin:24
