@@ -1,0 +1,18 @@
+section.section
+  .container
+    = render 'shared/atoms/heading', title: "#{@place.name} | Add new note"
+
+    = form_with model: @note, url: place_notes_path, local: true do |f|
+      = render 'shared/molecules/inputs/textarea',
+        form: f,
+        name: :content,
+        label: 'Note',
+        placeholder: 'Very good coffee place!!',
+        margin: 24
+      = render 'shared/molecules/inputs/file',
+        form: f,
+        name: :images,
+        label: 'Image',
+        margin: 24
+      = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
+      = render 'shared/atoms/buttons/sub', path: place_path(@place), text: 'Back', margin:24
