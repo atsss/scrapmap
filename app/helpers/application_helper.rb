@@ -1,7 +1,7 @@
 module ApplicationHelper
   def map_tag
-    content_tag(:div, style: 'width: 800px;') do
-      content_tag(:div, nil, id: 'map', style: 'width: 800px; height: 400px;')
+    content_tag(:div, style: 'width: 100%;') do
+      content_tag(:div, nil, id: 'map', style: 'width: 100%; height: 400px;')
     end
   end
 

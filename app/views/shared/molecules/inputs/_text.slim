@@ -4,8 +4,9 @@
 - type ||= :text
 - hide_value ||= false
 - margin ||= 0
+- class_name ||= nil
 
-- form_options = { placeholder: placeholder, maxlength: maxlength, class: 'input' }
+- form_options = { placeholder: placeholder, maxlength: maxlength, class: "input #{class_name}" }
 - form_options.merge!(value: nil) if hide_value
 
 .field.u-mb0 class="u-mt#{margin}"

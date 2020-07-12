@@ -1,20 +1,40 @@
-section
-  h1 Place create
+section.section
+  .container
+    = render 'shared/atoms/heading', title: 'Place index'
 
-  = form_with model: @form, url: places_path, local: true do |f|
-    = f.label :name
-    = f.text_field :name
-
-    = f.label :lat
-    = f.phone_field :lat, id: 'js-lat'
-
-    = f.label :lng
-    = f.phone_field :lng, id: 'js-lng'
-
-    = f.label :note
-    = f.text_area :note
-
-    = f.label :images
-    = f.file_field :images, multiple: true
-
-    = f.submit 'Create'
+    = form_with model: @form, url: places_path, local: true do |f|
+      = render 'shared/molecules/inputs/text',
+        form: f,
+        name: :name,
+        label: 'Name',
+        placeholder: 'Starbucks',
+        margin: 24
+      = render 'shared/molecules/inputs/text',
+        form: f,
+        type: :phone,
+        name: :lat,
+        label: 'Latitude',
+        placeholder: '35',
+        margin: 24,
+        class_name: 'js-lat'
+      = render 'shared/molecules/inputs/text',
+        form: f,
+        type: :phone,
+        name: :lng,
+        label: 'Longitude',
+        placeholder: '138',
+        margin: 24,
+        class_name: 'js-lng'
+      = render 'shared/molecules/inputs/textarea',
+        form: f,
+        name: :note,
+        label: 'Note',
+        placeholder: 'Very good coffee place!!',
+        margin: 24
+      = render 'shared/molecules/inputs/file',
+        form: f,
+        name: :images,
+        label: 'Image',
+        margin: 24
+      = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
+      = render 'shared/atoms/buttons/sub', path: root_path, text: 'Back', margin:24

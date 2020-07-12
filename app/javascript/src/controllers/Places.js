@@ -1,6 +1,22 @@
 import Base from "../Base";
 
 export default class Places extends Base {
+  beforeAction(actionName) {
+    $(".js-input").on("change", function(event) {
+      if (event.target.files && event.target.files[0]) {
+        const reader = new FileReader();
+
+        let target_class_name = event.target.dataset.target;
+
+        reader.onload = function(e) {
+          $(target_class_name).attr("src", e.target.result);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    });
+  }
+
   index(vars) {
     const map = setMap();
     for (let i = 0; i < vars.length; i++) { setMarker(map, vars[i]['lat'], vars[i]['lng']); }
@@ -16,13 +32,13 @@ export default class Places extends Base {
       setLocation,
       (error) => console.log('GPS get location error: ', error.message),
       { enableHighAccuracy: true }
-  );
+    );
   }
 }
 
 const setLocation = position => {
-  $('#js-lat').val(position.coords.latitude)
-  $('#js-lng').val(position.coords.longitude)
+  $('.js-lat').val(position.coords.latitude)
+  $('.js-lng').val(position.coords.longitude)
   console.log('lat: ', position.coords.latitude);
   console.log('lng: ', position.coords.longitude);
 }

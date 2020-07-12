@@ -1,11 +1,11 @@
-section
-  h1 Place index
+section.section
+  .container
+    = render 'shared/atoms/heading', title: 'Place index'
+    = render 'shared/atoms/buttons/default', text: 'Create New', path: new_place_path, margin: 16
 
-  = link_to 'Create New', new_place_path
+    .u-mt16
+      = map_tag
 
-  = map_tag
-
-  ul
-    - @places.each do |place|
-      li = link_to place.name, place_path(place)
-
+    ul
+      - @places.each do |place|
+        li.u-mt32 = render 'shared/atoms/link', path:place_path(place), text: place.name
