@@ -6,9 +6,7 @@ module Places
     float :lat
     float :lng
     string :note
-    array :images, default: nil do
-      object class: ActionDispatch::Http::UploadedFile
-    end
+    object :images, class: ActionDispatch::Http::UploadedFile, default: nil
 
     validates :name, :lat, :lng, :note, presence: true
 
