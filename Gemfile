@@ -15,6 +15,7 @@ gem 'slim-rails'
 
 # Data/Model
 gem 'active_interaction'
+gem 'paranoia'
 
 # Image
 gem 'aws-sdk-s3', require: false
