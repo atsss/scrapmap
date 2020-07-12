@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_062631) do
+ActiveRecord::Schema.define(version: 2020_07_12_131207) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_07_12_062631) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_channels_on_deleted_at"
   end
 
   create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -44,6 +46,8 @@ ActiveRecord::Schema.define(version: 2020_07_12_062631) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_notes_on_deleted_at"
     t.index ["place_id"], name: "index_notes_on_place_id"
   end
 
@@ -54,7 +58,9 @@ ActiveRecord::Schema.define(version: 2020_07_12_062631) do
     t.float "lat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.index ["channel_id"], name: "index_places_on_channel_id"
+    t.index ["deleted_at"], name: "index_places_on_deleted_at"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

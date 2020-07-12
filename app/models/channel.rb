@@ -3,11 +3,18 @@
 # Table name: channels
 #
 #  id         :bigint           not null, primary key
+#  deleted_at :datetime
 #  name       :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_channels_on_deleted_at  (deleted_at)
+#
 class Channel < ApplicationRecord
+  acts_as_paranoid
+
   has_many :places, dependent: :restrict_with_error
   validates :name, presence: true
 end

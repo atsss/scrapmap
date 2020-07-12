@@ -3,6 +3,7 @@
 # Table name: places
 #
 #  id         :bigint           not null, primary key
+#  deleted_at :datetime
 #  lat        :float(24)
 #  lng        :float(24)
 #  name       :string(255)
@@ -13,8 +14,11 @@
 # Indexes
 #
 #  index_places_on_channel_id  (channel_id)
+#  index_places_on_deleted_at  (deleted_at)
 #
 class Place < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :channel
   has_many :notes, dependent: :restrict_with_error
   validates :name, :lat, :lng, presence: true
