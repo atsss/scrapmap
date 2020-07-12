@@ -1,0 +1,8 @@
+section.section
+  .container
+    = render 'shared/atoms/heading', title: 'Channel index'
+    = render 'shared/atoms/buttons/default', text: 'Create New', path: new_channel_path, margin: 16
+
+    ul
+      - @channels.each do |channel|
+        li.u-mt32 = render 'shared/atoms/buttons/sub', path:channel_path(channel), text: channel.name

@@ -1,0 +1,13 @@
+section.section
+  .container
+    = render 'shared/atoms/heading', title: 'Place index'
+
+    = form_with model: @channel, url: channels_path, local: true do |f|
+      = render 'shared/molecules/inputs/text',
+        form: f,
+        name: :name,
+        label: 'Name',
+        placeholder: 'Starbucks',
+        margin: 24
+      = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
+      = render 'shared/atoms/buttons/sub', path: root_path, text: 'Back', margin:24
