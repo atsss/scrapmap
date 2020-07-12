@@ -2,6 +2,7 @@ module Places
   class Create < ApplicationService
     include Rails.application.routes.url_helpers
 
+    integer :channel_id
     string :name
     float :lat
     float :lng
@@ -16,7 +17,7 @@ module Places
     validates :name, :lat, :lng, :note, presence: true
 
     def execute
-      place = Place.new(name: name, lat: lat, lng: lng)
+      place = Place.new(channel_id: channel_id, name: name, lat: lat, lng: lng)
 
       transaction do
         place.save!

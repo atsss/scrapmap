@@ -1,8 +1,9 @@
 section.section
   .container
-    = render 'shared/atoms/heading', title: 'Place index'
+    = render 'shared/atoms/heading', title: 'New place'
 
     = form_with model: @form, url: places_path, local: true do |f|
+      = f.hidden_field :channel_id
       = render 'shared/molecules/inputs/text',
         form: f,
         name: :name,
@@ -37,4 +38,4 @@ section.section
         label: 'Image',
         margin: 24
       = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
-      = render 'shared/atoms/buttons/sub', path: root_path, text: 'Back', margin:24
+      = render 'shared/atoms/buttons/sub', path: channel_path(@form.channel_id), text: 'Back', margin:24

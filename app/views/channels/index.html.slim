@@ -5,4 +5,4 @@ section.section
 
     ul
       - @channels.each do |channel|
-        li.u-mt32 = render 'shared/atoms/buttons/sub', path:channel_path(channel), text: channel.name
+        li.u-mt32 = render 'shared/atoms/buttons/sub', path:channel_path(channel), text: "#{channel.name} channel"

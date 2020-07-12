@@ -1,7 +1,10 @@
 section.section
   .container
     = render 'shared/atoms/heading', title: "#{@channel.name} channel"
-    = render 'shared/atoms/buttons/default', text: 'Add new place', path: new_place_path, margin: 16
+    = render 'shared/atoms/buttons/default',
+      text: 'Add new place',
+      path: new_place_path(channel_id: @channel.id),
+      margin: 16
 
     .u-mt16
       = map_tag

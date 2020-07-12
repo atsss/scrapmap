@@ -11,7 +11,7 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @form = Places::Create.new
+    @form = Places::Create.new(channel_id: params[:channel_id])
   end
 
   def create
@@ -33,7 +33,10 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
   end
 
+  #FIXME: 複数登録できるようにする
   def places_create_params
-    params.require(:places_create).permit(:name, :lat, :lng, :note, :images) #FIXME: 複数登録できるようにする
+    params
+      .require(:places_create)
+      .permit(:channel_id, :name, :lat, :lng, :note, :images)
   end
 end
