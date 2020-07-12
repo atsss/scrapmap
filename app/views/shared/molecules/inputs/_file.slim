@@ -6,9 +6,15 @@
   .control
     .file
       label.file-label style="width: #{width}"
-        = form.file_field name,
-          class: "file-input js-input",
-          data: { target: ".js-#{name.to_s}" }
+        - if Rails.env.production?
+          = form.file_field name,
+            direct_upload: true,
+            class: "file-input js-input",
+            data: { target: ".js-#{name.to_s}" }
+        - else
+          = form.file_field name,
+            class: "file-input js-input",
+            data: { target: ".js-#{name.to_s}" }
         = form.hidden_field "#{name}_cache".to_sym
         span.file-cta style="width: #{width}"
           span.file-icon

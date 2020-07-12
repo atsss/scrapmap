@@ -6,7 +6,12 @@ module Places
     float :lat
     float :lng
     string :note
-    object :images, class: ActionDispatch::Http::UploadedFile, default: nil
+
+    if Rails.env.production?
+      string :images, default: nil
+    else
+      object :images, class: ActionDispatch::Http::UploadedFile, default: nil
+    end
 
     validates :name, :lat, :lng, :note, presence: true
 
