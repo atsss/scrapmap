@@ -2,17 +2,17 @@ section.section
   .container
     = render 'shared/atoms/heading', title: @place.name
 
-  .u-mt16
-    = map_tag
+    .u-mt16
+      = map_tag
 
-  ul
-    - @place.notes.each do |note|
-      li.u-mt16
-        = render layout: 'shared/atoms/card', locals: { margin: 0 } do
-          - note.images.each do |image|
-            = image_tag image
-          = render 'shared/atoms/texts/default',
-            text: note.content,
-            margin: 8
+    ul
+      - @place.notes.each do |note|
+        li.u-mt16
+          = render layout: 'shared/atoms/card', locals: { margin: 0 } do
+            - note.images.each do |image|
+              = image_tag image
+            = render 'shared/atoms/texts/default',
+              text: note.content,
+              margin: 8
 
-  = render 'shared/atoms/buttons/sub', path: root_path, text: 'Back', margin: 16
+    = render 'shared/atoms/buttons/sub', path: root_path, text: 'Back', margin: 16
