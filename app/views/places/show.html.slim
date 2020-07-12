@@ -11,6 +11,10 @@ section.section
       - @place.notes.order(id: :desc).each do |note|
         li.u-mt16
           = render layout: 'shared/atoms/card', locals: { margin: 0 } do
+            = render 'shared/molecules/with_link',
+              title: l(note.created_at, format: :default),
+              path: edit_place_note_path(id: note.id, place_id: @place.id),
+              text: 'Edit'
             - note.images.each do |image|
               = image_tag image
             = render 'shared/atoms/texts/default',
