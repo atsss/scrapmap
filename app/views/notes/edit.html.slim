@@ -1,0 +1,31 @@
+section.section
+  .container
+    = render 'shared/atoms/heading', title: "#{@place.name} | Edit note"
+
+    = form_with model: @note, url: place_note_path(@place, @note), local: true do |f|
+      = render 'shared/molecules/inputs/select',
+        form: f,
+        name: :place_id,
+        options: Place.all.map{ |p| [p.name, p.id] },
+        label: 'Place',
+        margin: 24
+      = render 'shared/molecules/inputs/textarea',
+        form: f,
+        name: :content,
+        label: 'Note',
+        placeholder: 'Very good coffee place!!',
+        margin: 24
+      = render 'shared/molecules/inputs/file',
+        form: f,
+        name: :images,
+        label: 'Image',
+        margin: 24
+      = render 'shared/atoms/buttons/default', form: f, text: 'Edit', margin:24
+
+    = render 'shared/atoms/buttons/danger',
+      path: place_note_path(@place, @note),
+      method: :delete,
+      text: 'Delete',
+      confirm: 'Are you sure to delete this note?',
+      margin: 24
+    = render 'shared/atoms/buttons/sub', path: place_path(@place), text: 'Back', margin:24

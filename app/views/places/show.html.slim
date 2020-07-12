@@ -16,7 +16,7 @@ section.section
               path: edit_place_note_path(id: note.id, place_id: @place.id),
               text: 'Edit'
             - note.images.each do |image|
-              = image_tag image
+              = image_tag image, class: 'u-mt8'
             = render 'shared/atoms/texts/default',
               text: note.content,
               margin: 8

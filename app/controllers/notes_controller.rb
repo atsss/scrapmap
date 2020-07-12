@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :set_note, only: %i(edit update destroy)
   before_action :set_place
 
   def new
@@ -18,7 +19,31 @@ class NotesController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @note.update(note_params)
+      redirect_to place_path(note_params[:place_id]), notice: 'Success'
+    else
+      flash.now[:alert] = @note.errors.full_messages.join(', ')
+      render :edit
+    end
+  end
+
+  def destroy
+    if @note.destroy
+      redirect_to place_path(params[:place_id]), notice: 'Success'
+    else
+      flash.now[:alert] = @note.errors.full_messages.join(', ')
+      render :edit
+    end
+  end
+
   private
+
+  def set_note
+    @note = Note.find(params[:id])
+  end
 
   def set_place
     @place = Place.find(params[:place_id])
@@ -26,6 +51,6 @@ class NotesController < ApplicationController
 
   # FIXME: 複数登録できるようにする
   def note_params
-    params.require(:note).permit(:content, :images)
+    params.require(:note).permit(%i(place_id content images))
   end
 end
