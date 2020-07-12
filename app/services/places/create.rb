@@ -1,5 +1,7 @@
 module Places
   class Create < ApplicationService
+    include Rails.application.routes.url_helpers
+
     string :name
     float :lat
     float :lng
@@ -18,7 +20,15 @@ module Places
         place.notes.create!(content: note, images: images)
       end
 
+      send_slack(place)
       place
+    end
+
+    private
+
+    def send_slack(place)
+      messenger = Messenger.new(:slack, 'cocchi', '_title')
+      messenger.push!("New post!\n#{place_url(place)}")
     end
   end
 end
