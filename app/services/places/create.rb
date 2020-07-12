@@ -30,7 +30,7 @@ module Places
     private
 
     def send_slack(place)
-      messenger = Messenger.new(:slack, 'cocchi', '_title')
+      messenger = Messenger.new(:slack, 'cocchi')
       messenger.push!("New post!\n#{place_url(place)}")
     end
   end

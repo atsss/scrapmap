@@ -23,7 +23,7 @@ module Notes
     private
 
     def send_slack(place)
-      messenger = Messenger.new(:slack, 'cocchi', '_title')
+      messenger = Messenger.new(:slack, 'cocchi')
       messenger.push!("Add new note!\n#{place_url(place)}")
     end
   end

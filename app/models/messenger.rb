@@ -1,8 +1,11 @@
 class Messenger
   def initialize(_how, to, name = nil)
-    to = '#devops_development' unless Rails.env.production?
-
-    @notifier = Slack::Notifier.new(Settings.slack.webhook_url, channel: to, username: name, link_names: 1)
+    @notifier = Slack::Notifier.new(
+      ENV['SLACK_WEBHOOK_URL'],
+      channel: to,
+      username: name,
+      link_names: 1
+    )
   end
 
   def push!(message, options = {})
