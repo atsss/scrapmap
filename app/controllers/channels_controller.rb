@@ -5,7 +5,9 @@ class ChannelsController < ApplicationController
     @channels = Channel.all
   end
 
-  def show; end
+  def show
+    @js_vars = Place.all
+  end
 
   def new
     @channel = Channel.new

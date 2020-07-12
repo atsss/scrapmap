@@ -1,11 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: %i(show)
 
-  def index
-    @places = Place.all
-    @js_vars = @places
-  end
-
   def show
     @js_vars = @place
   end

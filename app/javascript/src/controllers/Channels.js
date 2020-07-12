@@ -3,7 +3,7 @@ import Base from "../Base";
 export default class Channels extends Base {
   show(vars) {
     const map = setMap();
-    setMarker(map, vars['lat'], vars['lng']);
+    for (let i = 0; i < vars.length; i++) { setMarker(map, vars[i]['lat'], vars[i]['lng']); }
   }
 }
 
