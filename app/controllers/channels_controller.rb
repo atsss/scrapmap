@@ -6,7 +6,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @js_vars = Place.all
+    @js_vars = @channel.places
   end
 
   def new
