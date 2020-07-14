@@ -19,5 +19,5 @@ class Note < ApplicationRecord
 
   belongs_to :place
   has_many_attached :images
-  validates :content, presence: true
+  validates :content, presence: true, unless: proc { |note| note.images.attached? }
 end

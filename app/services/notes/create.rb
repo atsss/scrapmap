@@ -11,7 +11,9 @@ module Notes
       object :images, class: ActionDispatch::Http::UploadedFile, default: nil
     end
 
-    validates :place, :content, presence: true
+    validates :place, presence: true
+    validates :content, presence: true, if: proc { |form| form.images.blank? }
+    validates :images, presence: true, if: proc { |form| form.content.blank? }
 
     def execute
       note = place.notes.create!(content: content, images: images)
