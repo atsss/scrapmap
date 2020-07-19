@@ -16,7 +16,7 @@ section.section
             = render 'shared/molecules/with_link',
               title: l(note.created_at, format: :default),
               path: edit_place_note_path(id: note.id, place_id: @place.id),
-              text: 'Edit'
+              text: 'Update'
             - note.images.each do |image|
               = image_tag image, class: 'u-mt8'
             = render 'shared/atoms/texts/default',

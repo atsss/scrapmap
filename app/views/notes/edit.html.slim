@@ -2,7 +2,7 @@
 
 section.section
   .container
-    = render 'shared/atoms/heading', title: "#{@place.name} | Edit note"
+    = render 'shared/atoms/heading', title: "#{@place.name} | Update note"
 
     = form_with model: @note, url: place_note_path(@place, @note), local: true do |f|
       = render 'shared/molecules/inputs/select',
@@ -22,7 +22,7 @@ section.section
         name: :images,
         label: 'Image',
         margin: 24
-      = render 'shared/atoms/buttons/default', form: f, text: 'Edit', margin:24
+      = render 'shared/atoms/buttons/default', form: f, text: 'Update', margin:24
 
     = render 'shared/atoms/buttons/danger',
       path: place_note_path(@place, @note),
