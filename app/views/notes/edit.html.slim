@@ -10,6 +10,7 @@ section.section
         name: :place_id,
         options: Place.all.map{ |p| [p.name, p.id] },
         label: 'Place',
+        hint: 'required',
         margin: 24
       = render 'shared/molecules/inputs/textarea',
         form: f,
