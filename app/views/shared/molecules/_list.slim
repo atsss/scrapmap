@@ -1,0 +1,7 @@
+= render 'shared/atoms/texts/large', text: place.name, margin: 32
+.m-list
+  - place.notes.select { |n| n.images.attached? }.last(4).each do |note|
+    = render layout: 'shared/atoms/card', locals: { margin: 8, class_name: 'm-list__card' } do
+      = render 'shared/atoms/texts/sub', text: l(note.created_at)
+      .u-mt8 = image_tag cdn_path(note.images.last)
+= render 'shared/atoms/buttons/sub', path: place_path(place), text: 'See more', margin: 8

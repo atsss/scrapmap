@@ -1,4 +1,5 @@
 - margin ||= 0
+- class_name ||= nil
 
-.a-card class="u-mt#{margin}"
+.a-card class="u-mt#{margin} #{class_name}"
   = yield

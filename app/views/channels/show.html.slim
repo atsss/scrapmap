@@ -11,6 +11,4 @@ section.section
     .u-mt16
       = map_tag
 
-    ul
-      - @channel.places.each do |place|
-        li.u-mt32 = render 'shared/atoms/link', path: place_path(place), text: place.name
+    = render partial: 'shared/molecules/list', collection: @channel.places, as: :place

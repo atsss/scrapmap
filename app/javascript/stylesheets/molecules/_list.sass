@@ -1,0 +1,18 @@
+.m-list
+  width: 100%
+  overflow-x: scroll
+  display: flex
+  padding: 4px
+
+  &__card
+    min-width: 300px
+    height: 350px
+    display: flex
+    flex-direction: column
+    transition: 0.2s
+    &:not(:first-child)
+      margin-left: -130px
+    &:hover
+      transform: translateY(-1rem)
+      ~ .m-list__card
+        transform: translateX(130px)
