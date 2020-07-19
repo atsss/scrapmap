@@ -5,9 +5,20 @@ module ApplicationHelper
     end
   end
 
-  def header(back_path=nil)
+  def header(back_path = nil)
     content_for(:header) do
       render 'shared/organisms/header', back_path: back_path
+    end
+  end
+
+  def cdn_path(attachment)
+    service = Rails.application.config.active_storage.service
+
+    if service == :amazon
+      key = attachment&.blob&.key
+      "#{Settings.cloudfront.url}/#{key}"
+    else
+      rails_blob_path(attachment)
     end
   end
 
