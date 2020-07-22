@@ -28,7 +28,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
   end
 
-  #FIXME: 複数登録できるようにする
+  # FIXME: 複数登録できるようにする
   def places_create_params
     params
       .require(:places_create)

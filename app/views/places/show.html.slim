@@ -1,6 +1,5 @@
 = header(channel_path(@place.channel))
-- content_for :nav
-  = render 'shared/organisms/nav', route_path: 'aaa'
+= nav(@place)
 
 section.section
   .container
@@ -8,8 +7,6 @@ section.section
 
     .u-mt16
       = map_tag
-
-    = render 'shared/atoms/buttons/default', path: new_place_note_path(@place), text: 'Add new note', margin: 16
 
     ul
       - @place.notes.order(id: :desc).each do |note|
