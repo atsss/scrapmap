@@ -1,0 +1,16 @@
+- route_path ||= nil
+- add_path ||= nil
+- order_path ||= nil
+
+nav.section.o-nav
+  .container
+    .o-nav__block
+      .o-nav__tab class="#{route_path ? 'o-nav__tab--active' : ''}"
+        i.fas.fa-map-marker-alt.o-nav__icon
+        span.o-nav__label Route
+      .o-nav__tab class="#{add_path ? 'o-nav__tab--active' : ''}"
+        i.far.fa-plus-square.o-nav__icon
+        span.o-nav__label Add
+      .o-nav__tab class="#{order_path ? 'o-nav__tab--active' : ''}"
+        i.fas.fa-shopping-cart.o-nav__icon
+        span.o-nav__label Order

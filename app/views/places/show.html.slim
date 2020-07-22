@@ -1,4 +1,6 @@
 = header(channel_path(@place.channel))
+- content_for :nav
+  = render 'shared/organisms/nav', route_path: 'aaa'
 
 section.section
   .container
