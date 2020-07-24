@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    meta content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes" name="viewport"
+    title Cocchi
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+    script src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_API_KEY']}" async defer
+  body
+    = yield(:header)
+
+    main.o-main
+      = render 'shared/molecules/messages/flash', margin: 8
+      = yield
+
+    = yield(:nav)
+    = js_bootstrap_tag

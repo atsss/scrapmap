@@ -1,0 +1,20 @@
+section.section
+  .container
+    = render 'shared/atoms/heading', title: 'Cocchi | Login'
+
+    = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      = render 'shared/molecules/inputs/text',
+        form: f,
+        name: :email,
+        type: :email,
+        label: 'Email',
+        placeholder: 'text@edu.ciid.dk',
+        margin: 24
+      = render 'shared/molecules/inputs/text',
+        form: f,
+        name: :password,
+        type: :password,
+        label: 'Password',
+        margin: 24
+
+      = render 'shared/atoms/buttons/default', form: f, text: 'Submit', margin:24
