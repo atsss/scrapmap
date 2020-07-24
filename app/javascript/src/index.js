@@ -1,15 +1,15 @@
 import Base from "./Base";
-import Channels from "./controllers/Channels";
-import Notes from "./controllers/Notes";
-import Places from "./controllers/Places";
+import FrontChannels from "./controllers/front/Channels";
+import FrontNotes from "./controllers/front/Notes";
+import FrontPlaces from "./controllers/front/Places";
 
 global.$ = global.jQuery = require("jquery");
 
 const App = {
   Base,
-  Channels,
-  Notes,
-  Places
+  FrontChannels,
+  FrontNotes,
+  FrontPlaces
 };
 
 export default App;

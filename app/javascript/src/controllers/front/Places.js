@@ -1,6 +1,6 @@
-import Base from "../Base";
+import Base from "../../Base";
 
-export default class Places extends Base {
+export default class FrontPlaces extends Base {
   beforeAction(actionName) {
     $(".js-input").on("change", function(event) {
       if (event.target.files && event.target.files[0]) {

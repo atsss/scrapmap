@@ -1,6 +1,6 @@
-import Base from "../Base";
+import Base from "../../Base";
 
-export default class Channels extends Base {
+export default class FrontChannels extends Base {
   show(vars) {
     const map = setMap();
     for (let i = 0; i < vars.length; i++) { setMarker(map, vars[i]['lat'], vars[i]['lng']); }
