@@ -15,6 +15,7 @@ gem 'slim-rails'
 
 # Data/Model
 gem 'active_interaction'
+gem 'devise'
 gem 'paranoia'
 
 # Image
