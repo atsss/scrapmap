@@ -22,8 +22,11 @@
 #  index_accounts_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class Account < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
+
+  # デフォルトでログイン時に remember_me を true にする
+  def remember_me
+    true
+  end
 end
