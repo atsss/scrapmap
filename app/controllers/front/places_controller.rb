@@ -1,5 +1,5 @@
 module Front
-  class PlacesController < ApplicationController
+  class PlacesController < FrontController
     before_action :set_place, only: %i(show)
 
     def show

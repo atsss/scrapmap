@@ -1,5 +1,5 @@
 module Front
-  class NotesController < ApplicationController
+  class NotesController < FrontController
     before_action :set_note, only: %i(edit update destroy)
     before_action :set_place
 

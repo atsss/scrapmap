@@ -1,5 +1,5 @@
 module Front
-  class ChannelsController < ApplicationController
+  class ChannelsController < FrontController
     before_action :set_channel, only: :show
 
     def index
