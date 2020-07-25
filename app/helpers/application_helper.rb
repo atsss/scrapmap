@@ -24,6 +24,17 @@ module ApplicationHelper
     end
   end
 
+  def resize_image(image:, width:, height:)
+    image
+      .variant(
+        combine_options: {
+          resize: "#{width}x#{height}^",
+          crop: "#{width}x#{height}+0+0",
+          gravity: :center
+        }
+      ).processed
+  end
+
   def cdn_path(attachment)
     service = Rails.application.config.active_storage.service
 
@@ -31,7 +42,7 @@ module ApplicationHelper
       key = attachment&.blob&.key
       "#{Settings.cloudfront.url}/#{key}"
     else
-      rails_blob_path(attachment)
+      attachment
     end
   end
 
