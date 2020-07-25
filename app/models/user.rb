@@ -10,6 +10,7 @@
 class User < ApplicationRecord
   has_one :account, dependent: :restrict_with_error
   has_one_attached :image
+  has_many :notes, dependent: :restrict_with_error
 
   validates :name, presence: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_052147) do
+ActiveRecord::Schema.define(version: 2020_07_25_054216) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_052147) do
   end
 
   create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "place_id", null: false
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_052147) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_notes_on_deleted_at"
     t.index ["place_id"], name: "index_notes_on_place_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

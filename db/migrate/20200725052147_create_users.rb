@@ -6,5 +6,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.timestamps
     end
     add_reference :accounts, :user, index: true, after: :id
+    add_reference :notes, :user, index: true, after: :id
   end
 end

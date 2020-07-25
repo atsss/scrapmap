@@ -8,7 +8,9 @@ module Front
     end
 
     def create
-      outcome = Notes::Create.run(note_params.merge(place: @place).to_h)
+      outcome = Notes::Create.run(
+        note_params.merge(user: @current_user, place: @place).to_h
+      )
 
       if outcome.valid?
         redirect_to place_path(@place), notice: 'Success'

@@ -2,6 +2,7 @@ module Places
   class Create < ApplicationService
     include Rails.application.routes.url_helpers
 
+    object :user
     integer :channel_id
     string :name
     float :lat
@@ -14,14 +15,15 @@ module Places
       object :images, class: ActionDispatch::Http::UploadedFile, default: nil
     end
 
-    validates :name, :lat, :lng, presence: true
+    validates :user, :channel_id, :name, :lat, :lng, presence: true
 
     def execute
       place = Place.new(channel_id: channel_id, name: name, lat: lat, lng: lng)
 
       transaction do
         place.save!
-        place.notes.create!(content: note, images: images) if note.present? || images.present?
+        place.notes.create!(user: user, content: note.presence, images: images) \
+          if note.present? || images.present?
       end
 
       send_slack(place)

@@ -11,7 +11,9 @@ module Front
     end
 
     def create
-      outcome = Places::Create.run(places_create_params.to_h)
+      outcome = Places::Create.run(
+        places_create_params.merge(user: @current_user).to_h
+      )
 
       if outcome.valid?
         redirect_to place_path(outcome.result), notice: 'Success'

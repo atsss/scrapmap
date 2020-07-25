@@ -2,6 +2,7 @@ module Notes
   class Create < ApplicationService
     include Rails.application.routes.url_helpers
 
+    object :user
     object :place
     string :content
 
@@ -11,12 +12,12 @@ module Notes
       object :images, class: ActionDispatch::Http::UploadedFile, default: nil
     end
 
-    validates :place, presence: true
+    validates :user, :place, presence: true
     validates :content, presence: true, if: proc { |form| form.images.blank? }
     validates :images, presence: true, if: proc { |form| form.content.blank? }
 
     def execute
-      note = place.notes.create!(content: content, images: images)
+      note = place.notes.create!(user: user, content: content.presence, images: images)
 
       send_slack(place)
       note
