@@ -3,5 +3,5 @@
   - place.notes.order(id: :desc).select { |n| n.images.attached? }.last(4).each do |note|
     = render layout: 'shared/atoms/card', locals: { margin: 8, class_name: 'm-list__card' } do
       = render 'shared/atoms/texts/sub', text: l(note.created_at)
-      .u-mt8 = image_tag cdn_path(resize_image(image: note.images.last, width: 400, height: 300))
+      .u-mt8 = image_tag resize_image(image: note.images.last, width: 400, height: 300)
 = render 'shared/atoms/buttons/sub', path: place_path(place), text: 'See more', margin: 8
