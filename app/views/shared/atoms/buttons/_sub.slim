@@ -9,10 +9,10 @@
 - if form.present?
   = form.button :submit,
     class: "button is-medium is-fullwidth u-mt#{margin}",
-    data: { disable_with: '処理中..' }
+    data: { disable_with: 'Processing..' }
     = text
 - elsif path.present?
   = link_to path,
     class: "button is-#{size} #{width} u-mt#{margin}",
-    disabled: disabled, data: { disable_with: '処理中..' }
+    disabled: disabled, data: { disable_with: 'Processing..' }
     = text
