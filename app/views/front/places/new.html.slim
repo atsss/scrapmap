@@ -15,22 +15,11 @@ section.section
         margin: 24
       = render 'shared/molecules/inputs/text',
         form: f,
-        type: :phone,
-        name: :lat,
-        label: 'Latitude',
-        placeholder: '35',
-        hint: 'required',
-        margin: 24,
-        class_name: 'js-lat'
-      = render 'shared/molecules/inputs/text',
-        form: f,
-        type: :phone,
-        name: :lng,
-        label: 'Longitude',
-        hint: 'required',
-        placeholder: '138',
-        margin: 24,
-        class_name: 'js-lng'
+        name: :google_map_url,
+        label: 'Google Maps URL',
+        placeholder: 'https://goo.gl/maps/7qVt8XbBN7GVZdp9A',
+        hint: "required when you're not going to use current location",
+        margin: 24
       = render 'shared/molecules/inputs/textarea',
         form: f,
         name: :note,
@@ -42,4 +31,20 @@ section.section
         name: :images,
         label: 'Image',
         margin: 24
+
+      / js で動的に値を入力するために必要
+      div style='visibility: hidden; height: 0;'
+        = render 'shared/molecules/inputs/text',
+          form: f,
+          type: :phone,
+          name: :lat,
+          label: 'Latitude',
+          class_name: 'js-lat'
+        = render 'shared/molecules/inputs/text',
+          form: f,
+          type: :phone,
+          name: :lng,
+          label: 'Longitude',
+          class_name: 'js-lng'
+
       = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24

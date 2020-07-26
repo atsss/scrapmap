@@ -16,7 +16,13 @@ module Front
       )
 
       if outcome.valid?
-        redirect_to place_path(outcome.result), notice: 'Success'
+        message = if outcome.result.google_map_url
+                    'It takes time to get the location info from Google Maps URL'
+                  else
+                    'Success'
+                  end
+
+        redirect_to place_path(outcome.result), notice: message
       else
         @form = Places::Create.new(places_create_params)
 
@@ -35,7 +41,7 @@ module Front
     def places_create_params
       params
         .require(:places_create)
-        .permit(:channel_id, :name, :lat, :lng, :note, :images)
+        .permit(:channel_id, :name, :lat, :lng, :google_map_url, :note, :images)
     end
   end
 end
