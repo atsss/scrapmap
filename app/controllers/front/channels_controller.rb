@@ -7,7 +7,7 @@ module Front
     end
 
     def show
-      @js_vars = @channel.places
+      @js_vars = js_vars
     end
 
     def new
@@ -33,6 +33,22 @@ module Front
 
     def channel_params
       params.require(:channel).permit(:name)
+    end
+
+    def js_vars
+      url_helpers = Rails.application.routes.url_helpers
+
+      @channel.places.map do |place| # FIXME: リファクタリング
+        place_vars = place.attributes.slice('name', 'lat', 'lng')
+        vistors = place
+                    .notes
+                    .includes(:user)
+                    .map { |note| note.user.name }
+                    .uniq
+                    .join(', ')
+
+        place_vars.merge(path: url_helpers.place_path(place), vistors: vistors)
+      end
     end
   end
 end
