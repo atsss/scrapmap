@@ -25,14 +25,7 @@ module ApplicationHelper
   end
 
   def resize_image(image:, width:, height:)
-    image
-      .variant(
-        combine_options: {
-          resize: "#{width}x#{height}^",
-          crop: "#{width}x#{height}+0+0",
-          gravity: :center
-        }
-      ).processed
+    image.variant(resize_to_fill: [width, height]).processed
   end
 
   def cdn_path(attachment)
