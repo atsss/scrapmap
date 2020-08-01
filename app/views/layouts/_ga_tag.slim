@@ -9,9 +9,9 @@
     gtag('js', new Date());
 
     if(#{user_id}) {
-      gtag('config', #{tracking_id}, {
+      gtag('config', "#{tracking_id}", {
       'custom_map': {'dimension1': 'user_id'},
       });
-      gtag('set', {'user_id': #{user_id}});
+      gtag('set', {'user_id': "#{user_id}"});
       gtag('event', 'user_id_dimension', {'user_id': #{user_id}});
-    } else { gtag('config', #{tracking_id}); }
+    } else { gtag('config', "#{tracking_id}"); }
