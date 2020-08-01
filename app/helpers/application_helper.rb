@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def resize_image(image:, width:, height:)
-    image.variant(resize_to_fill: [width, height]).processed
+    image.variant(resize_to_fill: [width, height], strip: true).processed
   end
 
   def cdn_path(attachment)
