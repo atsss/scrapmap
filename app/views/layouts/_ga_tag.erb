@@ -1,0 +1,17 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GOOGLE_ANALYTICS_TRACKING_ID'] %>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  <%- if @current_user -%>
+  gtag('config', '<%= ENV['GOOGLE_ANALYTICS_TRACKING_ID'] %>', {
+    'custom_map': {'dimension1': 'user_id'},
+  });
+  gtag('set', {'user_id': <%= @current_user.id %>});
+  gtag('event', 'user_id_dimension', {'user_id': <%= @current_user.id %>});
+  <%- else -%>
+  gtag('config', '<%= ENV['GOOGLE_ANALYTICS_TRACKING_ID'] %>');
+<%- end -%>
+</script>

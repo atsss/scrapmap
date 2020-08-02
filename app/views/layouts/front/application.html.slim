@@ -6,9 +6,9 @@ html
     title Cocchi
     = csrf_meta_tags
     = csp_meta_tag
-    = render 'layouts/ga_tag'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
+    = render 'layouts/ga_tag'
     script src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_API_KEY']}" async defer
   body
     = yield(:header)
