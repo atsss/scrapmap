@@ -1,9 +1,9 @@
 = header
+= add_button(path: new_channel_path, text: 'Add new channel')
 
 section.section
   .container
-    = render 'shared/atoms/heading', title: 'Channel index'
-    = render 'shared/atoms/buttons/default', text: 'Create new channel', path: new_channel_path, margin: 16
+    = render 'shared/atoms/heading', title: 'All Channels'
 
     ul
       - @channels.each do |channel|

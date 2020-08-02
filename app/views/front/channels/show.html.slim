@@ -1,12 +1,9 @@
 = header(root_path)
+= add_button(path: new_place_path(channel_id: @channel.id), text: 'Add new place')
 
 section.section
   .container
     = render 'shared/atoms/heading', title: "#{@channel.name} channel"
-    = render 'shared/atoms/buttons/default',
-      text: 'Add new place',
-      path: new_place_path(channel_id: @channel.id),
-      margin: 16
 
     .u-mt16
       = map_tag

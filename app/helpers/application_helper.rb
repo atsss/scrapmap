@@ -24,6 +24,16 @@ module ApplicationHelper
     end
   end
 
+  def add_button(path: nil, text: nil)
+    content_for(:nav) do
+      content_tag(:nav, class: 'section o-nav o-nav--button') do
+        content_tag(:div, class: 'container') do
+          render 'shared/atoms/buttons/default', text: text, path: path
+        end
+      end
+    end
+  end
+
   def resize_image(image:, width:, height:)
     image.variant(resize_to_fill: [width, height], strip: true).processed
   end
