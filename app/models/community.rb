@@ -14,7 +14,10 @@
 #  index_communities_on_deleted_at  (deleted_at)
 #
 class Community < ApplicationRecord
+  extend Enumerize
   acts_as_paranoid
+
+  enumerize :kind, in: %i(private public), default: :public, scope: true
 
   has_many :user_communities, dependent: :restrict_with_error
   has_many :users, through: :user_communities

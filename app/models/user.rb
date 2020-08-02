@@ -15,4 +15,12 @@ class User < ApplicationRecord
   has_many :notes, dependent: :restrict_with_error
 
   validates :name, presence: true
+
+  def private_community
+    communities.with_kind(:private).first
+  end
+
+  def public_communities
+    communities.with_kind(:public)
+  end
 end
