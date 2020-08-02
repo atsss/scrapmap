@@ -55,7 +55,7 @@ module Places
                     .edit_url(
                       model_name: 'place',
                       id: place.id,
-                      host: 'https://cocchi-stg.herokuapp.com' # FIXME
+                      host: ENV.fetch('HOST') { '127.0.0.1' }
                     )
 
       messenger = Messenger.new(:slack, 'cocchi-test')
