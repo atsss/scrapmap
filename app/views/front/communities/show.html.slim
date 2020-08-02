@@ -3,10 +3,11 @@
 
 section.section
   .container
-    = render 'shared/atoms/heading', title: "#{@community.name} All Channels"
-
-    - @current_user.communities.where.not(id: @community.id).each do |community|
-      = render 'shared/atoms/buttons/sub', path: root_path(id: community.id), text: "#{community.name}"
+    .tabs.is-centered.is-medium
+      ul
+        - @current_user.communities.order(id: :desc).each do |community|
+          = content_tag(:li, class: "#{@community.id == community.id ? 'is-active' : ''}")
+            = link_to community.name, root_path(id: community.id)
 
     ul
       - @community.channels.each do |channel|
