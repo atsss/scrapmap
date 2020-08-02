@@ -8,6 +8,8 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+  has_many :user_communities, dependent: :restrict_with_error
+  has_many :communities, through: :user_communities
   has_one :account, dependent: :restrict_with_error
   has_one_attached :image
   has_many :notes, dependent: :restrict_with_error
