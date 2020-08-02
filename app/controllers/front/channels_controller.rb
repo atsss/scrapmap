@@ -10,7 +10,7 @@ module Front
       @js_vars = js_vars
       @images = ActiveStorage::Attachment
                   .where(
-                    record_type: Note.class_name,
+                    record_type: 'Note',
                     record_id: Note.where(place_id: @channel.places.ids).ids
                   )
                   .order(id: :desc)
