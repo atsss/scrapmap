@@ -55,7 +55,7 @@ module Places
                     .edit_url(
                       model_name: 'place',
                       id: place.id,
-                      host: ENV.fetch('HOST') { '127.0.0.1' }
+                      host: ENV.fetch('ORIGIN_DOMAIN') { '127.0.0.1' }
                     )
 
       messenger = Messenger.new(:slack, 'cocchi-test')
