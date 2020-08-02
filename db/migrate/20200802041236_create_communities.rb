@@ -8,5 +8,6 @@ class CreateCommunities < ActiveRecord::Migration[6.0]
       t.datetime :deleted_at
     end
     add_index :communities, :deleted_at
+    add_reference :channels, :community, index: true, after: :id
   end
 end

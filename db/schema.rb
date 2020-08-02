@@ -53,10 +53,12 @@ ActiveRecord::Schema.define(version: 2020_08_02_041357) do
   end
 
   create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "community_id"
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.index ["community_id"], name: "index_channels_on_community_id"
     t.index ["deleted_at"], name: "index_channels_on_deleted_at"
   end
 

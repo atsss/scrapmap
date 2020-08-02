@@ -21,6 +21,7 @@ class Community < ApplicationRecord
 
   has_many :user_communities, dependent: :restrict_with_error
   has_many :users, through: :user_communities
+  has_many :channels, dependent: :restrict_with_error
 
   validates :name, :kind, presence: true
 end
