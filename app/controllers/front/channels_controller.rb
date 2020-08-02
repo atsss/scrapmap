@@ -8,6 +8,12 @@ module Front
 
     def show
       @js_vars = js_vars
+      @images = ActiveStorage::Attachment
+                  .where(
+                    record_type: Note.class_name,
+                    record_id: Note.where(place_id: @channel.places.ids).ids
+                  )
+                  .order(id: :desc)
     end
 
     def new

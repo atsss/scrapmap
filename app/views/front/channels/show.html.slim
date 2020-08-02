@@ -11,4 +11,10 @@ section.section
     .u-mt16
       = map_tag
 
-    = render partial: 'shared/molecules/list', collection: @channel.places, as: :place
+    / FIXME: 必要なかったら消す
+    /= render partial: 'shared/molecules/list', collection: @channel.places, as: :place
+    ul.m-lists.u-mt16
+      - @images.each do |image|
+        li.m-lists__list
+          = link_to place_path(image.record.place_id)
+            = image_tag resize_image(image: image, width: 400, height: 300)
