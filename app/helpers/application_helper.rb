@@ -43,7 +43,7 @@ module ApplicationHelper
 
     if service == :amazon
       key = attachment&.blob&.key
-      "#{Settings.cloudfront.url}/#{key}"
+      "#{ENV['ASSET_HOST']}/#{key}"
     else
       attachment
     end
