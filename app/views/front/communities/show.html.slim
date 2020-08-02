@@ -7,7 +7,7 @@ section.section
       ul
         - @current_user.communities.order(id: :desc).each do |community|
           = content_tag(:li, class: "#{@community.id == community.id ? 'is-active' : ''}")
-            = link_to community.name, root_path(id: community.id)
+            = link_to "#{community.name}(#{community.channels.size})", root_path(id: community.id)
 
     ul
       - @community.channels.each do |channel|
