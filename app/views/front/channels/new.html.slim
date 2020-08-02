@@ -2,9 +2,10 @@
 
 section.section
   .container
-    = render 'shared/atoms/heading', title: 'Place index'
+    = render 'shared/atoms/heading', title: 'New channel'
 
     = form_with model: @channel, url: channels_path, local: true do |f|
+      = f.hidden_field :community_id
       = render 'shared/molecules/inputs/text',
         form: f,
         name: :name,

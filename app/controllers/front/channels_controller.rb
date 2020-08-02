@@ -2,10 +2,6 @@ module Front
   class ChannelsController < FrontController
     before_action :set_channel, only: :show
 
-    def index
-      @channels = Channel.all
-    end
-
     def show
       @js_vars = js_vars
       @images = ActiveStorage::Attachment
@@ -17,7 +13,9 @@ module Front
     end
 
     def new
-      @channel = Channel.new
+      community_id = params[:community_id] || @current_user.private_community.id
+
+      @channel = Channel.new(community_id: community_id)
     end
 
     def create
@@ -38,7 +36,7 @@ module Front
     end
 
     def channel_params
-      params.require(:channel).permit(:name)
+      params.require(:channel).permit(%i(name community_id))
     end
 
     def js_vars

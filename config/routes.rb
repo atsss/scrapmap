@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :accounts
-  root to: 'front/channels#index'
+  root to: 'front/communities#show'
 
   scope module: 'front' do
     resources :channels, only: %i(show new create)

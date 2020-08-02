@@ -1,0 +1,13 @@
+= header
+= add_button(path: new_channel_path(community_id: @community.id), text: 'Add new channel')
+
+section.section
+  .container
+    = render 'shared/atoms/heading', title: "#{@community.name} All Channels"
+
+    - @current_user.communities.where.not(id: @community.id).each do |community|
+      = render 'shared/atoms/buttons/sub', path: root_path(id: community.id), text: "#{community.name}"
+
+    ul
+      - @community.channels.each do |channel|
+        li.u-mt32 = render 'shared/atoms/buttons/sub', path: channel_path(channel), text: "#{channel.name} channel"
