@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_054216) do
+ActiveRecord::Schema.define(version: 2020_08_02_041357) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2020_07_25_054216) do
     t.index ["deleted_at"], name: "index_channels_on_deleted_at"
   end
 
+  create_table "communities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "kind"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_communities_on_deleted_at"
+  end
+
   create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "place_id", null: false
@@ -84,6 +93,17 @@ ActiveRecord::Schema.define(version: 2020_07_25_054216) do
     t.datetime "deleted_at"
     t.index ["channel_id"], name: "index_places_on_channel_id"
     t.index ["deleted_at"], name: "index_places_on_deleted_at"
+  end
+
+  create_table "user_communities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "community_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["community_id"], name: "index_user_communities_on_community_id"
+    t.index ["deleted_at"], name: "index_user_communities_on_deleted_at"
+    t.index ["user_id"], name: "index_user_communities_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
