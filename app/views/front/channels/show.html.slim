@@ -15,3 +15,6 @@ section.section
         li.m-lists__list
           = link_to place_path(image.record.place_id)
             = image_tag resize_image(image: image, width: 400, height: 300)
+      // 真ん中抜けになるのを防ぐ
+      - if @images.size % 3 == 2
+        li.m-lists__list
