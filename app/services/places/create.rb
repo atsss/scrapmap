@@ -28,7 +28,7 @@ module Places
       end
 
       send_slack_to_admin(place) if place.google_map_url
-      send_notification(place)
+      send_notification(place) if place.channel.community.kind.public?
       place
     end
 

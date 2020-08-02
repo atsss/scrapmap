@@ -19,13 +19,13 @@ module Notes
     def execute
       note = place.notes.create!(user: user, content: content.presence, images: images)
 
-      send_slack(place)
+      send_notification(place) if place.channel.community.kind.public?
       note
     end
 
     private
 
-    def send_slack(place)
+    def send_notification(place)
       messenger = Messenger.new(:slack, 'cocchi')
       messenger.push!("Add new note!\n#{place_url(place)}")
     end
