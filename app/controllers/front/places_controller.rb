@@ -1,6 +1,6 @@
 module Front
   class PlacesController < FrontController
-    before_action :set_place, only: %i(show)
+    before_action :set_place, only: %i(show edit update)
 
     def show
       @js_vars = @place
@@ -16,7 +16,7 @@ module Front
       )
 
       if outcome.valid?
-        message = if outcome.result.google_map_url
+        message = if outcome.result.need_check?
                     'It takes time to get the location info from Google Maps URL'
                   else
                     'Success'
@@ -31,10 +31,35 @@ module Front
       end
     end
 
+    def edit; end
+
+    def update
+      outcome = Places::Update.run(place_params.merge(place: @place).to_h)
+
+      if outcome.valid?
+        message = if outcome.result.need_check?
+                    'It takes time to get the location info from Google Maps URL'
+                  else
+                    'Success'
+                  end
+
+        redirect_to place_path(outcome.result), notice: message
+      else
+        @form = Places::Create.new(places_create_params)
+
+        flash.now[:alert] = outcome.errors.full_messages.join(', ')
+        render :edit
+      end
+    end
+
     private
 
     def set_place
       @place = Place.find(params[:id])
+    end
+
+    def place_params
+      params.require(:place).permit(%i(name google_map_url))
     end
 
     # FIXME: 複数登録できるようにする

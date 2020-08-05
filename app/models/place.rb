@@ -24,4 +24,8 @@ class Place < ApplicationRecord
   belongs_to :channel
   has_many :notes, dependent: :restrict_with_error
   validates :name, presence: true
+
+  def need_check?
+    lat.nil? || lng.nil?
+  end
 end

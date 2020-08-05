@@ -1,0 +1,21 @@
+= header(place_path(@place))
+
+section.section
+  .container
+    = render 'shared/atoms/heading', title: "#{@place.name} | Edit place"
+
+    = form_with model: @place, url: place_path(@place), html: { class: 'js-loading__form' }, local: true do |f|
+      = render 'shared/molecules/inputs/text',
+        form: f,
+        name: :name,
+        label: 'Name',
+        placeholder: 'Starbucks',
+        hint: 'required',
+        margin: 24
+      = render 'shared/molecules/inputs/text',
+        form: f,
+        name: :google_map_url, label: 'Google Maps URL',
+        placeholder: 'https://goo.gl/maps/7qVt8XbBN7GVZdp9A',
+        hint: "required when you're not going to use current location",
+        margin: 24
+      = render 'shared/atoms/buttons/default', form: f, text: 'Update', margin:24

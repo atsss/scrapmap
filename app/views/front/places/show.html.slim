@@ -3,7 +3,11 @@
 
 section.section
   .container
-    = render 'shared/atoms/heading', title: @place.name
+    = render 'shared/molecules/with_link',
+      title: @place.name,
+      text: 'Edit',
+      path: edit_place_path(@place),
+      is_heading: true
 
     .u-mt16
       = map_tag
