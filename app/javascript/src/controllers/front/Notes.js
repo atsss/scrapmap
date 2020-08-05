@@ -15,5 +15,10 @@ export default class FrontNotes extends Base {
         reader.readAsDataURL(event.target.files[0]);
       }
     });
+
+    $(".js-loading__form").on("submit", ev => {
+      $(".js-loading").addClass("is-active");
+      $(".js-loading__circle").addClass("m-loading__circle--active");
+    });
   }
 }

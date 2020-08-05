@@ -4,7 +4,7 @@ section.section
   .container
     = render 'shared/atoms/heading', title: "#{@place.name} | Add new note"
 
-    = form_with model: @note, url: place_notes_path, local: true do |f|
+    = form_with model: @note, url: place_notes_path, html: { class: 'js-loading__form' }, local: true do |f|
       = render 'shared/molecules/inputs/textarea',
         form: f,
         name: :content,

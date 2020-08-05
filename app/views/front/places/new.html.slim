@@ -4,7 +4,7 @@ section.section
   .container
     = render 'shared/atoms/heading', title: 'New place'
 
-    = form_with model: @form, url: places_path, local: true do |f|
+    = form_with model: @form, url: places_path, html: { class: 'js-loading__form' }, local: true do |f|
       = f.hidden_field :channel_id
       = render 'shared/molecules/inputs/text',
         form: f,
