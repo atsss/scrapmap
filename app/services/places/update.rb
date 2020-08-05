@@ -38,7 +38,7 @@ module Places
                       host: ENV.fetch('ORIGIN_DOMAIN') { '127.0.0.1' }
                     )
 
-      messenger = Messenger.new(:slack, 'cocchi-test')
+      messenger = Messenger.new(:slack, 'notification')
       messenger.push!("緯度経度の代理入力\n#{admin_url}")
     end
   end

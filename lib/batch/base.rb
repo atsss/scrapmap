@@ -31,7 +31,7 @@ module Batch
     end
 
     def notice_error(exception)
-      mes = Messenger.new(:slack, '#cocchi-test', 'batch-checker')
+      mes = Messenger.new(:slack, '#notification', 'batch-checker')
       attachments = {
         color: 'danger',
         title: exception.inspect,
