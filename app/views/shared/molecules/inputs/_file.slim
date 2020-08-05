@@ -2,7 +2,7 @@
 
 .field.u-mb0 class="u-mt#{margin}"
   label.label = label
-  - if form.object.send(name)&.attached?
+  - if form.object.send(name).is_a?(ActiveStorage::Attached) && form.object.send(name)&.attached?
     = image_tag cdn_path(form.object.send(name).last), class: "js-#{name.to_s}"
   - else
       = image_pack_tag 'no_image.png', class: "js-#{name.to_s}"

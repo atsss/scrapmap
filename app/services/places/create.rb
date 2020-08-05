@@ -5,8 +5,8 @@ module Places
     object :user
     integer :channel_id
     string :name
-    float :lat
-    float :lng
+    float :lat, default: nil
+    float :lng, default: nil
     string :google_map_url, default: nil
     string :note, default: nil
 
@@ -16,9 +16,15 @@ module Places
       object :images, class: ActionDispatch::Http::UploadedFile, default: nil
     end
 
-    validates :user, :channel_id, :name, :lat, :lng, presence: true
+    validates :user, :channel_id, :name, presence: true
 
     def execute
+      if invalid_location_infomation?
+        errors.add(:base, I18n.t('error.location'))
+
+        return
+      end
+
       place = Place.new(place_attributes)
 
       transaction do
@@ -33,6 +39,13 @@ module Places
     end
 
     private
+
+    def invalid_location_infomation?
+      return false if google_map_url.presence
+      return false if lat.presence && lng.presence
+
+      true
+    end
 
     def place_attributes
       {
