@@ -129,6 +129,11 @@ Style/SymbolProc:
 # Metrics
 #
 
+Metrics/LineLength:
+  Max: 150
+  Exclude:
+    - 'config/**/*'
+
 Metrics/MethodLength:
   Max: 60
 
