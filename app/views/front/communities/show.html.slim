@@ -5,7 +5,10 @@ section.section
   .container
     .tabs.is-centered.is-medium
       ul
-        - @current_user.communities.order(id: :desc).each do |community|
+        - pc = @current_user.private_community
+        = content_tag(:li, class: "#{@community.id == pc.id ? 'is-active' : ''}")
+          = link_to "#{pc.name}(#{pc.channels.size})", root_path(id: pc.id)
+        - @current_user.public_communities.each do |community|
           = content_tag(:li, class: "#{@community.id == community.id ? 'is-active' : ''}")
             = link_to "#{community.name}(#{community.channels.size})", root_path(id: community.id)
 
