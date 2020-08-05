@@ -5,7 +5,7 @@
   - if form.object.send(name)&.attached?
     = image_tag cdn_path(form.object.send(name).last), class: "js-#{name.to_s}"
   - else
-      = image_tag '/', class: "js-#{name.to_s}"
+      = image_pack_tag 'no_image.png', class: "js-#{name.to_s}"
   .control
     .file
       label.file-label style="width: #{width}"
