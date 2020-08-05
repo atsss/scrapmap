@@ -200,6 +200,7 @@ GEM
     multipart-post (2.1.1)
     mysql2 (0.5.3)
     nested_form (0.3.2)
+    newrelic_rpm (6.12.0.367)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
@@ -366,6 +367,7 @@ DEPENDENCIES
   image_processing
   jbuilder
   mysql2
+  newrelic_rpm
   paranoia
   pry-byebug
   pry-doc

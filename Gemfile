@@ -30,6 +30,7 @@ gem 'slack-notifier'
 gem 'config'
 
 # Monitoring
+gem 'newrelic_rpm', group: :production
 gem 'sentry-raven'
 
 # Admin
