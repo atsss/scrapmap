@@ -45,7 +45,7 @@ module Places
     end
 
     def send_notification(place)
-      messenger = Messenger.new(:slack, 'cocchi')
+      messenger = Messenger.new(:slack, place.channel.community.name.downcase)
       messenger.push!("New post!\n#{place_url(place)}")
     end
 
