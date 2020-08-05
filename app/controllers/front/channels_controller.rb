@@ -1,6 +1,6 @@
 module Front
   class ChannelsController < FrontController
-    before_action :set_channel, only: :show
+    before_action :set_channel, only: %i(show edit update)
 
     def show
       @js_vars = js_vars
@@ -26,6 +26,17 @@ module Front
       else
         flash.now[:alert] = @channel.errors.full_messages.join(', ')
         render :new
+      end
+    end
+
+    def edit; end
+
+    def update
+      if @channel.update(channel_params)
+        redirect_to channel_path(@channel), notice: 'Success'
+      else
+        flash.now[:alert] = @channel.errors.full_messages.join(', ')
+        render :edit
       end
     end
 

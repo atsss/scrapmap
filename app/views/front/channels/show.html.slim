@@ -3,7 +3,11 @@
 
 section.section
   .container
-    = render 'shared/atoms/heading', title: "#{@channel.name} channel"
+    = render 'shared/molecules/with_link',
+      title: "#{@channel.name} channel",
+      text: 'Edit',
+      path: edit_channel_path(@channel),
+      is_heading: true
 
     .u-mt16
       = map_tag

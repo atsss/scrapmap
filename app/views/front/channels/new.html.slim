@@ -5,12 +5,4 @@ section.section
     = render 'shared/atoms/heading', title: 'New channel'
 
     = form_with model: @channel, url: channels_path, local: true do |f|
-      = f.hidden_field :community_id
-      = render 'shared/molecules/inputs/text',
-        form: f,
-        name: :name,
-        label: 'Name',
-        placeholder: 'Starbucks',
-        hint: 'required',
-        margin: 24
-      = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
+      = render 'form', f: f

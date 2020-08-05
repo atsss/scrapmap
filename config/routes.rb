@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'front/communities#show'
 
   scope module: 'front' do
-    resources :channels, only: %i(show new create)
+    resources :channels, only: %i(show new create edit update)
     resources :places, only: %i(show new create edit update) do
       resources :notes, only: %i(new create edit update destroy)
     end

@@ -1,3 +1,8 @@
+- is_heading ||= false
+
 .m-titles_with-link
-  = render 'shared/atoms/texts/sub', text: title
-  = render 'shared/atoms/link', path: path, text: text, margin: 10
+  - if is_heading
+    = render 'shared/atoms/heading', title: title
+  - else
+    = render 'shared/atoms/texts/sub', text: title
+  = render 'shared/atoms/link', path: path, text: text
