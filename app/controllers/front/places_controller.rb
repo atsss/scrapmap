@@ -12,7 +12,7 @@ module Front
 
     def create
       outcome = Places::Create.run(
-        places_create_params.merge(user: @current_user).to_h
+        places_create_params.merge(user: @current_user)
       )
 
       if outcome.valid?
@@ -64,9 +64,15 @@ module Front
 
     # FIXME: 複数登録できるようにする
     def places_create_params
-      params
-        .require(:places_create)
-        .permit(:channel_id, :name, :lat, :lng, :google_map_url, :note, :images)
+      nilfiy(
+        params
+          .require(:places_create)
+          .permit(:channel_id, :name, :lat, :lng, :google_map_url, :note, :images)
+      )
+    end
+
+    def nilfiy(custom_params)
+      custom_params.reject { |_k, v| v.blank? }
     end
   end
 end
