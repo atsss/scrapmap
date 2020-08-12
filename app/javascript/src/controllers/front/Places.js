@@ -28,7 +28,7 @@ export default class FrontPlaces extends Base {
   }
 
   show(vars) {
-    const map = setMap();
+    const map = setMap(vars['lat'], vars['lng']);
     setMarker(map, vars['lat'], vars['lng']);
   }
 
@@ -48,10 +48,15 @@ const setLocation = position => {
   console.log('lng: ', position.coords.longitude);
 }
 
-const setMap = () => {
-  // center の情報を位置情報から取得するようにする
+const centerPosition = { lat: 9.927698, lng: -84.0695952 }
+
+const setMap = (lat = centerPosition.lat, lng = centerPosition.lng) => {
+  if(lat == null) { lat = centerPosition.lat; }
+  if(lng == null) { lng = centerPosition.lng; }
+
+  console.log(lat, lng);
   const map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 9.927698, lng: -84.0695952},
+    center: { lat, lng },
     zoom: 13
   });
 
