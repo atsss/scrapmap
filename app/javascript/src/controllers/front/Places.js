@@ -1,4 +1,5 @@
 import Base from "../../Base";
+import { setLocation, setMap, setMarker } from "../../utils/Map"
 
 export default class FrontPlaces extends Base {
   beforeAction(actionName) {
@@ -22,11 +23,6 @@ export default class FrontPlaces extends Base {
     });
   }
 
-  index(vars) {
-    const map = setMap();
-    for (let i = 0; i < vars.length; i++) { setMarker(map, vars[i]['lat'], vars[i]['lng']); }
-  }
-
   show(vars) {
     const map = setMap(vars['lat'], vars['lng']);
     setMarker(map, vars['lat'], vars['lng']);
@@ -39,36 +35,4 @@ export default class FrontPlaces extends Base {
       { enableHighAccuracy: true }
     );
   }
-}
-
-const setLocation = position => {
-  $('.js-lat').val(position.coords.latitude)
-  $('.js-lng').val(position.coords.longitude)
-  console.log('lat: ', position.coords.latitude);
-  console.log('lng: ', position.coords.longitude);
-}
-
-const centerPosition = { lat: 35.6809591, lng: 139.7673068 }
-
-const setMap = (lat = centerPosition.lat, lng = centerPosition.lng) => {
-  if(lat == null) { lat = centerPosition.lat; }
-  if(lng == null) { lng = centerPosition.lng; }
-
-  console.log(lat, lng);
-  const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat, lng },
-    zoom: 13
-  });
-
-  return map
-}
-
-const setMarker = (map, lat, lng) => {
-  const markerLatLng = new google.maps.LatLng({ lat, lng });
-  const marker = new google.maps.Marker({
-    position: markerLatLng,
-    map: map
-  });
-
-  return marker;
 }
