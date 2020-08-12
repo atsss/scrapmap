@@ -31,6 +31,7 @@ module Places
         place.save!
         place.notes.create!(user: user, content: note.presence, images: images) \
           if note.present? || images.present?
+        calculate_center_position!(channel: Channel.find(channel_id))
       end
 
       send_slack_to_admin(place) if place.google_map_url
@@ -55,6 +56,15 @@ module Places
         lng: google_map_url.present? ? nil : lng,
         google_map_url: google_map_url.presence
       }
+    end
+
+    def calculate_center_position!(channel: nil)
+      places = channel.places.reject(&:need_check?)
+      size = places.size
+      center_lat = places.sum(&:lat) / size
+      center_lng = places.sum(&:lng) / size
+
+      channel.update!(center_lat: center_lat, center_lng: center_lng)
     end
 
     def send_notification(place)
