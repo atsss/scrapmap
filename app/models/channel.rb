@@ -19,6 +19,8 @@
 class Channel < ApplicationRecord
   acts_as_paranoid
 
+  DEFAULT_NAMES = %w(下書き カフェ 居酒屋 買い物 旅行).freeze
+
   belongs_to :community
   has_many :places, dependent: :restrict_with_error
   validates :name, presence: true
