@@ -52,8 +52,11 @@ module Front
 
     def js_vars
       url_helpers = Rails.application.routes.url_helpers
+      base = { lat: @channel.center_lat, lng: @channel.center_lng }
 
-      @channel.places.map do |place| # FIXME: リファクタリング
+      places = @channel.places.map do |place| # FIXME: リファクタリング
+        next if place.need_check?
+
         place_vars = place.attributes.slice('name', 'lat', 'lng')
         vistors = place
                     .notes
@@ -63,7 +66,9 @@ module Front
                     .join(', ')
 
         place_vars.merge(path: url_helpers.place_path(place), vistors: vistors)
-      end
+      end.compact
+
+      base.merge(places: places)
     end
   end
 end

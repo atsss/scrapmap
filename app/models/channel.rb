@@ -3,6 +3,8 @@
 # Table name: channels
 #
 #  id           :bigint           not null, primary key
+#  center_lat   :float(24)
+#  center_lng   :float(24)
 #  deleted_at   :datetime
 #  name         :string(255)      not null
 #  created_at   :datetime         not null
