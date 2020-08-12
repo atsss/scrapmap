@@ -48,7 +48,7 @@ const setLocation = position => {
   console.log('lng: ', position.coords.longitude);
 }
 
-const centerPosition = { lat: 9.927698, lng: -84.0695952 }
+const centerPosition = { lat: 35.6809591, lng: 139.7673068 }
 
 const setMap = (lat = centerPosition.lat, lng = centerPosition.lng) => {
   if(lat == null) { lat = centerPosition.lat; }
