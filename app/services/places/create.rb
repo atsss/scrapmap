@@ -61,6 +61,9 @@ module Places
     def calculate_center_position!(channel: nil)
       places = channel.places.reject(&:need_check?)
       size = places.size
+
+      return if size.zero?
+
       center_lat = places.sum(&:lat) / size
       center_lng = places.sum(&:lng) / size
 
