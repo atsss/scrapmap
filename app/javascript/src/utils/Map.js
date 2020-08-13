@@ -13,7 +13,7 @@ export const setMap = (lat = centerPosition.lat, lng = centerPosition.lng) => {
 
   const map = new google.maps.Map(document.getElementById('map'), {
     center: { lat, lng },
-    zoom: 13
+    zoom: 8
   });
 
   return map
