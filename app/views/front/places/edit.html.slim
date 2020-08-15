@@ -1,3 +1,5 @@
+- channel_options = Channel.where(community_id: @current_user.communities.ids).map { |c| ["#{c.community.name} - #{c.name}", c.id] }
+
 = header(place_path(@place))
 
 section.section
@@ -5,6 +7,13 @@ section.section
     = render 'shared/atoms/heading', title: "#{@place.name} | Edit place"
 
     = form_with model: @place, url: place_path(@place), html: { class: 'js-loading__form' }, local: true do |f|
+      = render 'shared/molecules/inputs/select',
+        form: f,
+        name: :channel_id,
+        options: channel_options,
+        label: 'Place',
+        hint: 'required',
+        margin: 24
       = render 'shared/molecules/inputs/text',
         form: f,
         name: :name,

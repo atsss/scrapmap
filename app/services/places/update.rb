@@ -1,6 +1,7 @@
 module Places
   class Update < ApplicationService
     object :place
+    integer :channel_id
     string :name
     string :google_map_url, default: nil
 
@@ -23,9 +24,9 @@ module Places
 
     def attributes
       if google_map_url.presence
-        { name: name, google_map_url: google_map_url }
+        { channel_id: channel_id, name: name, google_map_url: google_map_url }
       else
-        { name: name }
+        { channel_id: channel_id, name: name }
       end
     end
 

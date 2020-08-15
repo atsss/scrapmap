@@ -5,13 +5,6 @@ section.section
     = render 'shared/atoms/heading', title: "#{@place.name} | Edit note"
 
     = form_with model: @note, url: place_note_path(@place, @note), html: { class: 'js-loading__form' }, local: true do |f|
-      /= render 'shared/molecules/inputs/select',
-        form: f,
-        name: :place_id,
-        options: Place.all.map{ |p| [p.name, p.id] },
-        label: 'Place',
-        hint: 'required',
-        margin: 24
       = render 'shared/molecules/inputs/textarea',
         form: f,
         name: :content,

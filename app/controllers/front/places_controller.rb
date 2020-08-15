@@ -59,7 +59,7 @@ module Front
     end
 
     def place_params
-      params.require(:place).permit(%i(name google_map_url))
+      params.require(:place).permit(%i(channel_id name google_map_url))
     end
 
     # FIXME: 複数登録できるようにする
