@@ -12,15 +12,15 @@ export const setMap = (lat = centerPosition.lat, lng = centerPosition.lng) => {
   if(lng == null) { lng = centerPosition.lng; }
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat, lng },
-    zoom: 8
+    center: { lat: parseFloat(lat), lng: parseFloat(lng) },
+    zoom: 13
   });
 
   return map
 }
 
 export const setMarker = (map, lat, lng) => {
-  const markerLatLng = new google.maps.LatLng({ lat, lng });
+  const markerLatLng = new google.maps.LatLng({ lat: parseFloat(lat), lng: parseFloat(lng) });
   const marker = new google.maps.Marker({
     position: markerLatLng,
     map: map
@@ -30,7 +30,9 @@ export const setMarker = (map, lat, lng) => {
 }
 
 export const setMarkerWithMessage = (map, place) => {
-  const markerLatLng = new google.maps.LatLng({ lat: place['lat'], lng: place['lng'] });
+  const markerLatLng = new google.maps.LatLng(
+    { lat: parseFloat(place['lat']), lng: parseFloat(place['lng']) }
+  );
   const marker = new google.maps.Marker({
     position: markerLatLng,
     map: map

@@ -23,5 +23,6 @@ class Channel < ApplicationRecord
 
   belongs_to :community
   has_many :places, dependent: :restrict_with_error
+  has_many :locations, through: :places
   validates :name, presence: true
 end

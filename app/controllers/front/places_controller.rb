@@ -3,7 +3,7 @@ module Front
     before_action :set_place, only: %i(show edit update)
 
     def show
-      @js_vars = @place
+      @js_vars = { lat: @place.lat, lng: @place.lng }
     end
 
     def new

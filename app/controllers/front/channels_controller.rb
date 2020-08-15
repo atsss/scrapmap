@@ -54,10 +54,10 @@ module Front
       url_helpers = Rails.application.routes.url_helpers
       base = { lat: @channel.center_lat, lng: @channel.center_lng }
 
-      places = @channel.places.includes(notes: :user).map do |place| # FIXME: リファクタリング
+      places = @channel.places.includes(:location, notes: :user).map do |place| # FIXME: リファクタリング
         next if place.need_check?
 
-        place_vars = place.attributes.slice('name', 'lat', 'lng')
+        place_vars = { name: place.name, lat: place.lat, lng: place.lng }
         vistors = place
                     .notes
                     .map { |note| note.user.name }

@@ -15,7 +15,7 @@ module Places
     def execute
       place.update!(attributes)
 
-      send_slack_to_admin(place) if place.google_map_url
+      send_slack_to_admin(place.location) if google_map_url.presence
       place
     end
 
@@ -23,23 +23,23 @@ module Places
 
     def attributes
       if google_map_url.presence
-        { name: name, google_map_url: google_map_url, lat: nil, lng: nil }
+        { name: name, google_map_url: google_map_url }
       else
         { name: name }
       end
     end
 
-    def send_slack_to_admin(place)
+    def send_slack_to_admin(location)
       admin_url = RailsAdmin
                     .railtie_routes_url_helpers
                     .edit_url(
-                      model_name: 'place',
-                      id: place.id,
+                      model_name: 'location',
+                      id: location.id,
                       host: ENV.fetch('ORIGIN_DOMAIN') { '127.0.0.1' }
                     )
 
       messenger = Messenger.new(:slack, 'notification')
-      messenger.push!("緯度経度の代理入力\n#{admin_url}")
+      messenger.push!("緯度経度の代理入力\n#{admin_url}\n#{google_map_url}")
     end
   end
 end

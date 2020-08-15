@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_130037) do
+ActiveRecord::Schema.define(version: 2020_08_15_214438) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
@@ -73,6 +73,13 @@ ActiveRecord::Schema.define(version: 2020_08_12_130037) do
     t.index ["deleted_at"], name: "index_communities_on_deleted_at"
   end
 
+  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.decimal "lat", precision: 9, scale: 6
+    t.decimal "lng", precision: 9, scale: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "place_id", null: false
@@ -86,8 +93,11 @@ ActiveRecord::Schema.define(version: 2020_08_12_130037) do
   end
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "original_id"
     t.bigint "channel_id"
+    t.bigint "location_id"
     t.string "name"
+    t.string "kind"
     t.float "lng"
     t.float "lat"
     t.string "google_map_url"
@@ -97,6 +107,8 @@ ActiveRecord::Schema.define(version: 2020_08_12_130037) do
     t.datetime "deleted_at"
     t.index ["channel_id"], name: "index_places_on_channel_id"
     t.index ["deleted_at"], name: "index_places_on_deleted_at"
+    t.index ["location_id"], name: "index_places_on_location_id"
+    t.index ["original_id"], name: "index_places_on_original_id"
   end
 
   create_table "user_communities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
