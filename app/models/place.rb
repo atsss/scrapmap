@@ -30,5 +30,5 @@ class Place < ApplicationRecord
   has_many :notes, dependent: :restrict_with_error
   validates :name, presence: true
 
-  delegate :need_check?, to: :location
+  delegate :lat, :lng, :need_check?, to: :location
 end
