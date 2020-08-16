@@ -12,8 +12,6 @@ section.section
     .u-mt16
       = map_tag
 
-    / FIXME: 必要なかったら消す
-    /= render partial: 'shared/molecules/list', collection: @channel.places, as: :place
     ul.m-lists.u-mt16
       - @images.each do |image|
         li.m-lists__list
