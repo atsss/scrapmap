@@ -1,0 +1,14 @@
+/ js で動的に値を入力するために必要
+div style='visibility: hidden; height: 0;'
+  = render 'shared/molecules/inputs/text',
+    form: form,
+    type: :phone,
+    name: :lat,
+    label: 'Latitude',
+    class_name: 'js-lat'
+  = render 'shared/molecules/inputs/text',
+    form: form,
+    type: :phone,
+    name: :lng,
+    label: 'Longitude',
+    class_name: 'js-lng'

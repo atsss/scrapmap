@@ -37,20 +37,6 @@ section.section
         name: :images,
         label: 'Image',
         margin: 24
-
-      / js で動的に値を入力するために必要
-      div style='visibility: hidden; height: 0;'
-        = render 'shared/molecules/inputs/text',
-          form: f,
-          type: :phone,
-          name: :lat,
-          label: 'Latitude',
-          class_name: 'js-lat'
-        = render 'shared/molecules/inputs/text',
-          form: f,
-          type: :phone,
-          name: :lng,
-          label: 'Longitude',
-          class_name: 'js-lng'
+      = render 'shared/molecules/auto_location', form: f
 
       = render 'shared/atoms/buttons/default', form: f, text: 'Create', margin:24
