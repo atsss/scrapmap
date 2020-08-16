@@ -1,5 +1,5 @@
 = header
-= add_button(path: new_channel_path(community_id: @community.id), text: 'Add new channel')
+= add_button(path: new_channel_path(community_id: @community.id), text: 'Add new folder')
 
 section.section
   .container
@@ -14,4 +14,4 @@ section.section
 
     ul
       - @community.channels.each do |channel|
-        li.u-mt32 = render 'shared/atoms/buttons/sub', path: channel_path(channel), text: "#{channel.name} channel"
+        li.u-mt32 = render 'shared/atoms/buttons/sub', path: channel_path(channel), text: "#{channel.name} folder"

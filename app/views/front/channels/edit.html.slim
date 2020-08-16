@@ -2,7 +2,7 @@
 
 section.section
   .container
-    = render 'shared/atoms/heading', title: "#{@channel.name} | Edit channel"
+    = render 'shared/atoms/heading', title: "#{@channel.name} | Edit folder"
 
     = form_with model: @channel, url: channel_path(@channel), local: true do |f|
       = render 'form', f: f
