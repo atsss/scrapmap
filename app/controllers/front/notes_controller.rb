@@ -4,10 +4,14 @@ module Front
     before_action :set_place
 
     def new
+      authorize Note
+
       @note = Note.new
     end
 
     def create
+      authorize Note
+
       outcome = Notes::Create.run(
         note_params.merge(user: @current_user, place: @place).to_h
       )
@@ -22,11 +26,15 @@ module Front
       end
     end
 
-    def edit; end
+    def edit
+      authorize @note
+    end
 
     def update
+      authorize @note
+
       if @note.update(note_params)
-        redirect_to place_path(note_params[:place_id]), notice: 'Success'
+        redirect_to place_path(@note.place), notice: 'Success'
       else
         flash.now[:alert] = @note.errors.full_messages.join(', ')
         render :edit
@@ -34,6 +42,8 @@ module Front
     end
 
     def destroy
+      authorize @note
+
       if @note.destroy
         redirect_to place_path(params[:place_id]), notice: 'Success'
       else

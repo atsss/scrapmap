@@ -2,7 +2,9 @@ module Front
   class CommunitiesController < FrontController
     before_action :set_community
 
-    def show; end
+    def show
+      authorize @community
+    end
 
     private
 

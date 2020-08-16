@@ -1,10 +1,14 @@
 module Front
   class DraftsController < FrontController
     def new
+      authorize Place
+
       @form = Places::Draft.new
     end
 
     def create
+      skip_authorization
+
       outcome = Places::Draft.run(places_draft_params.merge(user: @current_user))
 
       if outcome.valid?

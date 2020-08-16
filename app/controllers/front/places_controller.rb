@@ -3,14 +3,20 @@ module Front
     before_action :set_place, only: %i(show edit update)
 
     def show
+      authorize @place
+
       @js_vars = { lat: @place.lat, lng: @place.lng }
     end
 
     def new
+      authorize Place.new(channel_id: params[:channel_id])
+
       @form = Places::Create.new(channel_id: params[:channel_id])
     end
 
     def create
+      authorize Place.new(channel_id: places_create_params[:channel_id])
+
       outcome = Places::Create.run(
         places_create_params.merge(user: @current_user)
       )
@@ -32,10 +38,14 @@ module Front
     end
 
     def edit
+      authorize @place
+
       @js_vars = { lat: @place.lat, lng: @place.lng }
     end
 
     def update
+      authorize @place
+
       outcome = Places::Update.run(place_params.merge(place: @place).to_h)
 
       if outcome.valid?

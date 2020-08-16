@@ -2,9 +2,13 @@ module Front
   class CopiesController < FrontController
     before_action :set_place
 
-    def new; end
+    def new
+      authorize @place
+    end
 
     def create
+      authorize Place.new(channel_id: place_params[:channel_id])
+
       outcome = Places::Copy.run(place_params.to_h.merge(place: @place))
 
       if outcome.valid?

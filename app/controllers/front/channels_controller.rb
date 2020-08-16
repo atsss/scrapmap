@@ -3,6 +3,8 @@ module Front
     before_action :set_channel, only: %i(show edit update)
 
     def show
+      authorize @channel
+
       @js_vars = js_vars
       @images = ActiveStorage::Attachment
                   .where(
@@ -16,10 +18,14 @@ module Front
       community_id = params[:community_id] || @current_user.private_community.id
 
       @channel = Channel.new(community_id: community_id)
+
+      authorize @channel
     end
 
     def create
       @channel = Channel.new(channel_params)
+
+      authorize @channel
 
       if @channel.save
         redirect_to channel_path(@channel), notice: 'Success'
@@ -29,9 +35,13 @@ module Front
       end
     end
 
-    def edit; end
+    def edit
+      authorize @channel
+    end
 
     def update
+      authorize @channel
+
       if @channel.update(channel_params)
         redirect_to channel_path(@channel), notice: 'Success'
       else
