@@ -29,4 +29,19 @@ class Channel < ApplicationRecord
   has_many :places, dependent: :restrict_with_error
   has_many :locations, through: :places
   validates :name, presence: true
+
+  class << self
+    def update_center_position!(id)
+      channel = find(id)
+      places = channel.places.reject(&:need_check?)
+      size = places.size
+
+      return if size.zero?
+
+      center_lat = places.sum(&:lat) / size
+      center_lng = places.sum(&:lng) / size
+
+      channel.update!(center_lat: center_lat, center_lng: center_lng)
+    end
+  end
 end
