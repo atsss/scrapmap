@@ -1,0 +1,6 @@
+en:
+  enumerize:
+    place:
+      kind:
+        wanted: 'Want to go here!'
+        visited: 'Already visited here'

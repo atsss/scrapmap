@@ -8,6 +8,7 @@ section.section
       text: 'Edit',
       path: edit_place_path(@place),
       is_heading: true
+    = render 'shared/atoms/texts/sub', text: @place.kind.text, margin: 8
 
     .u-mt16
       = map_tag

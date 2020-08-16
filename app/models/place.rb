@@ -22,13 +22,16 @@
 #  index_places_on_original_id  (original_id)
 #
 class Place < ApplicationRecord
+  extend Enumerize
   acts_as_paranoid
+
+  enumerize :kind, in: %i(wanted visited), default: :visited, scope: true
 
   belongs_to :channel
   belongs_to :location
   belongs_to :original, class_name: 'Place', optional: true
   has_many :notes, dependent: :restrict_with_error
-  validates :name, presence: true
+  validates :name, :kind, presence: true
 
   delegate :lat, :lng, :need_check?, to: :location
 end

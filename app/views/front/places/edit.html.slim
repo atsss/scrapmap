@@ -21,6 +21,12 @@ section.section
         placeholder: 'Starbucks',
         hint: 'required',
         margin: 24
+      = render 'shared/molecules/inputs/select',
+        form: f,
+        name: :kind,
+        options: Place.kind.options,
+        label: 'Kind',
+        margin: 24
       = render 'shared/molecules/inputs/text',
         form: f,
         name: :google_map_url, label: 'Google Maps URL',

@@ -3,6 +3,7 @@ module Places
     object :place
     integer :channel_id
     string :name
+    string :kind
     string :google_map_url, default: nil
 
     if Rails.env.production?
@@ -24,9 +25,9 @@ module Places
 
     def attributes
       if google_map_url.presence
-        { channel_id: channel_id, name: name, google_map_url: google_map_url }
+        { channel_id: channel_id, name: name, kind: kind, google_map_url: google_map_url }
       else
-        { channel_id: channel_id, name: name }
+        { channel_id: channel_id, name: name, kind: kind }
       end
     end
 

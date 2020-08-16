@@ -5,6 +5,7 @@ module Places
     object :user
     integer :channel_id
     string :name
+    string :kind
     float :lat, default: nil
     float :lng, default: nil
     string :google_map_url, default: nil
@@ -16,7 +17,7 @@ module Places
       object :images, class: ActionDispatch::Http::UploadedFile, default: nil
     end
 
-    validates :user, :channel_id, :name, presence: true
+    validates :user, :channel_id, :kind, :name, presence: true
 
     def execute
       if invalid_location_infomation?
@@ -57,6 +58,7 @@ module Places
       {
         channel_id: channel_id,
         name: name,
+        kind: kind,
         google_map_url: google_map_url.presence
       }
     end
