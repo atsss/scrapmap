@@ -14,4 +14,4 @@ section.section
 
     ul
       - @community.channels.each do |channel|
-        li.u-mt32 = render 'shared/atoms/buttons/sub', path: channel_path(channel), text: "#{channel.name} folder"
+        li.u-mt32 = render 'shared/atoms/buttons/sub', path: channel_path(channel), text: "#{channel.name} folder(#{channel.places.size})"
