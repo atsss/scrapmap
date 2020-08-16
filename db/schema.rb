@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_234559) do
+ActiveRecord::Schema.define(version: 2020_08_16_071125) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_234559) do
   create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "community_id"
     t.string "name", null: false
+    t.string "kind"
     t.float "center_lat"
     t.float "center_lng"
     t.datetime "created_at", precision: 6, null: false

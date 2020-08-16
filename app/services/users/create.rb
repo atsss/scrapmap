@@ -10,6 +10,7 @@ module Users
         user.create_account!(email: email, password: password)
 
         community = user.communities.create!(name: 'Personal', kind: :private)
+        community.channels.create!(kind: :draft, name: '下書き')
         Channel::DEFAULT_NAMES.each { |name| community.channels.create!(name: name) }
       end
     end
