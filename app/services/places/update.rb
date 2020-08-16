@@ -4,6 +4,8 @@ module Places
     integer :channel_id
     string :name
     string :kind
+    float :lat
+    float :lng
     string :google_map_url, default: nil
 
     if Rails.env.production?
@@ -15,7 +17,10 @@ module Places
     validates :place, :name, presence: true
 
     def execute
-      place.update!(attributes)
+      transaction do
+        place.update!(attributes)
+        place.location.update!(lat: lat, lng: lng)
+      end
 
       send_slack_to_admin(place.location) if google_map_url.presence
       place

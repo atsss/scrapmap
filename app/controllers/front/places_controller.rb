@@ -31,7 +31,9 @@ module Front
       end
     end
 
-    def edit; end
+    def edit
+      @js_vars = { lat: @place.lat, lng: @place.lng }
+    end
 
     def update
       outcome = Places::Update.run(place_params.merge(place: @place).to_h)
@@ -59,7 +61,7 @@ module Front
     end
 
     def place_params
-      params.require(:place).permit(%i(channel_id name kind google_map_url))
+      params.require(:place).permit(%i(channel_id name kind lat lng google_map_url))
     end
 
     # FIXME: 複数登録できるようにする

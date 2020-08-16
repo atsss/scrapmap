@@ -21,16 +21,22 @@ section.section
         placeholder: 'Starbucks',
         hint: 'required',
         margin: 24
+
+      .field.u-mt24
+        label.label Pick location
+        = map_tag
+
       = render 'shared/molecules/inputs/select',
         form: f,
         name: :kind,
         options: Place.kind.options,
         label: 'Kind',
         margin: 24
-      = render 'shared/molecules/inputs/text',
+      /= render 'shared/molecules/inputs/text',
         form: f,
         name: :google_map_url, label: 'Google Maps URL',
         placeholder: 'https://goo.gl/maps/7qVt8XbBN7GVZdp9A',
         hint: "required when you're not going to use current location",
         margin: 24
+      = render 'shared/molecules/auto_location', form: f
       = render 'shared/atoms/buttons/default', form: f, text: 'Update', margin:24

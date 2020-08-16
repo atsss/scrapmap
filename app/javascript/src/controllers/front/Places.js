@@ -1,5 +1,6 @@
 import Base from "../../Base";
 import { setLocation, setMap, setMarker } from "../../utils/Map"
+import LocationPicker from "location-picker";
 
 export default class FrontPlaces extends Base {
   beforeAction(actionName) {
@@ -29,10 +30,41 @@ export default class FrontPlaces extends Base {
   }
 
   new() {
-    navigator.geolocation.getCurrentPosition(
-      setLocation,
-      (error) => console.log('GPS get location error: ', error.message),
-      { enableHighAccuracy: true }
-    );
+    const onIdlePositionView = document.getElementById('onIdlePositionView');
+    const lp = new LocationPicker('map', { setCurrentPosition: true }, { zoom: 15 });
+
+    const location = lp.getMarkerPosition();
+    const position = getPosition(location);
+    setLocation(position);
+
+    google.maps.event.addListener(lp.map, 'idle', function (event) {
+      const newLocation = lp.getMarkerPosition();
+      const newPosition = getPosition(newLocation);
+      setLocation(newPosition);
+    });
   }
+
+  edit(vars) {
+    const onIdlePositionView = document.getElementById('onIdlePositionView');
+    const lp = new LocationPicker('map', { lat: vars['lat'], lng: vars['lng'], zoom: 15 });
+
+    const location = lp.getMarkerPosition();
+    const position = getPosition(location);
+    setLocation(position);
+
+    google.maps.event.addListener(lp.map, 'idle', function (event) {
+      const newLocation = lp.getMarkerPosition();
+      const newPosition = getPosition(newLocation);
+      setLocation(newPosition);
+    });
+  }
+}
+
+const getPosition = location => {
+  let position = { coords: {} };
+
+  position.coords.latitude = location.lat;
+  position.coords.longitude = location.lng;
+
+  return position;
 }
