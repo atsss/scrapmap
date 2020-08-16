@@ -11,6 +11,7 @@ gem 'puma'
 gem 'webpacker'
 
 # View
+gem 'pundit'
 gem 'slim-rails'
 
 # Data/Model
