@@ -1,3 +1,4 @@
 en:
   error:
-      location: "The location Information seems wrong. Probably you're turning off the permission of your current location. Feel free to ask for support"
+    location: "The location Information seems wrong. Probably you're turning off the permission of your current location. Feel free to ask for support"
+    same_channel: "Folder must be different from the original"

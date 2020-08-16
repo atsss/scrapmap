@@ -12,14 +12,14 @@ module ApplicationHelper
   end
 
   def nav(place = nil)
-    add_path = new_place_note_path(place)
+    copy_path = new_place_copy_path(place)
     route_path = place.google_map_url || google_map_url(lat: place.lat, lng: place.lng)
     order_path = place.uber_eats_url
 
     content_for(:nav) do
       render 'shared/organisms/nav',
              route_path: route_path,
-             add_path: add_path,
+             copy_path: copy_path,
              order_path: order_path
     end
   end

@@ -1,5 +1,5 @@
 - route_path ||= nil
-- add_path ||= nil
+- copy_path ||= nil
 - order_path ||= nil
 
 nav.section.o-nav.o-nav--icons
@@ -13,14 +13,14 @@ nav.section.o-nav.o-nav--icons
         .o-nav__tab
           i.fas.fa-map-marker-alt.o-nav__icon
           span.o-nav__label Route
-      - if add_path
-        = link_to add_path, class: 'o-nav__tab o-nav__tab--active'
-          i.far.fa-plus-square.o-nav__icon
-          span.o-nav__label Add
+      - if copy_path
+        = link_to copy_path, class: 'o-nav__tab o-nav__tab--active'
+          i.far.fa-copy.o-nav__icon
+          span.o-nav__label Copy
       - else
         .o-nav__tab
-          i.far.fa-plus-square.o-nav__icon
-          span.o-nav__label Add
+          i.far.fa-copy.o-nav__icon
+          span.o-nav__label Copy
       - if order_path
         = link_to order_path, class: 'o-nav__tab o-nav__tab--active', target: :_blank
           i.fas.fa-shopping-cart.o-nav__icon

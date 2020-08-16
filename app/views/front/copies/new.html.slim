@@ -4,9 +4,9 @@
 
 section.section
   .container
-    = render 'shared/atoms/heading', title: "#{@place.name} | Edit place"
+    = render 'shared/atoms/heading', title: "#{@place.name} | Copy place"
 
-    = form_with model: @place, url: place_path(@place), html: { class: 'js-loading__form' }, local: true do |f|
+    = form_with model: @place, url: place_copy_path(@place), method: :post, local: true do |f|
       = render 'shared/molecules/inputs/select',
         form: f,
         name: :channel_id,
@@ -27,10 +27,4 @@ section.section
         options: Place.kind.options,
         label: 'Kind',
         margin: 24
-      = render 'shared/molecules/inputs/text',
-        form: f,
-        name: :google_map_url, label: 'Google Maps URL',
-        placeholder: 'https://goo.gl/maps/7qVt8XbBN7GVZdp9A',
-        hint: "required when you're not going to use current location",
-        margin: 24
-      = render 'shared/atoms/buttons/default', form: f, text: 'Update', margin:24
+      = render 'shared/atoms/buttons/default', form: f, text: 'Copy', margin:24
