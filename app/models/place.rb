@@ -6,8 +6,6 @@
 #  deleted_at     :datetime
 #  google_map_url :string(255)
 #  kind           :string(255)
-#  lat            :float(24)
-#  lng            :float(24)
 #  name           :string(255)
 #  uber_eats_url  :string(255)
 #  created_at     :datetime         not null
