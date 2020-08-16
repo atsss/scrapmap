@@ -4155,6 +4155,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+location-picker@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/location-picker/-/location-picker-1.1.1.tgz#d180e24758fcdcabff9784bb6cf4b68e933b1462"
+  integrity sha512-pG1HxHeJfu7hRu06hmfP81Q/6m4pOdl22kya7hAdwtqqEl+84NXxrIiPExipRu0rcTchP7YUu316TQAxjnneGQ==
+
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
