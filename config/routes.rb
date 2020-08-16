@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :places, only: %i(show new create edit update) do
       resources :notes, only: %i(new create edit update destroy)
     end
+    resource :draft, only: %i(new create)
   end
 end

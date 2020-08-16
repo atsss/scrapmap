@@ -1,0 +1,15 @@
+= header(root_path)
+
+section.section
+  .container
+    = render 'shared/atoms/heading', title: 'Quick save'
+
+    = form_with model: @form, url: draft_path, html: { class: 'js-loading__form' }, local: true do |f|
+      = render 'shared/molecules/inputs/file',
+        form: f,
+        name: :images,
+        label: 'Image',
+        margin: 24
+      = render 'shared/molecules/auto_location', form: f
+
+      = render 'shared/atoms/buttons/default', form: f, text: 'Save', margin:24
