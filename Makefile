@@ -29,8 +29,8 @@ rub:
 autorub:
 	@$(WEB) bundle exec rubocop -a
 rs:
-	@$(RAILS) s -b 0.0.0.0 -p 50272
+	@$(RAILS) s -b 0.0.0.0 -p 3001
 open:
-	@open http://127.0.0.1:50272
+	@open http://127.0.0.1:3001
 default:
 	@$(WEB) bash

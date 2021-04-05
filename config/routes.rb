@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :accounts
+  devise_for :accounts, controllers: {
+    omniauth_callbacks: 'accounts/omniauth_callbacks'
+  }
   root to: 'front/communities#show'
 
   scope module: 'front' do

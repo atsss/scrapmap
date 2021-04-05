@@ -5,11 +5,11 @@ services:
     working_dir: /home/circleci/scrapmap
     command: ["tail", "-f", "/dev/null"]
     ports:
-    - "50272:50272"
+    - "3001:3001"
     links:
     - mysql
     environment:
-      PORT: 50272
+      PORT: 3001
       DATABASE_HOST: mysql
     volumes:
     - scrapmap-native-osx-sync:/home/circleci/scrapmap:nocopy

@@ -28,9 +28,25 @@
 #
 class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable, :lockable
+         :recoverable, :rememberable, :validatable, :trackable, :lockable,
+         :omniauthable, omniauth_providers: %i(google_oauth2)
 
   belongs_to :user
+
+  class << self
+    def from_omniauth(access_token)
+      data = access_token.info
+      account = Account.where(email: data['email']).first
+
+      account ||= Account.create(
+        name: data['name'],
+        email: data['email'],
+        password: Devise.friendly_token[0, 20]
+      )
+
+      account
+    end
+  end
 
   # デフォルトでログイン時に remember_me を true にする
   def remember_me
