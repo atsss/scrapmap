@@ -18,7 +18,7 @@ gem 'slim-rails'
 gem 'active_interaction'
 gem 'devise'
 gem 'enumerize'
-gem 'omniauth', ' 1.9.1'
+gem 'omniauth', '1.9.2'
 gem 'omniauth-google-oauth2'
 gem 'paranoia'
 
